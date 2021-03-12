@@ -1,10 +1,30 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <title>BaSe - Dashboard</title>
-</head>
-<body>
-<h1>BaSe - Dashboard</h1>
-</body>
-</html>
+{% extends "global_layout.html" %}
+
+
+{% block head %}
+<link rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('webapp.views.dashboard.static', filename='css/dashboard.css') }}">
+{% endblock %}
+
+
+{% block content %}
+<div id="warning-banner">15 ungesehene Warnungen! Hier klicken zum Einsehen.</div>
+
+<div id="center">
+    <div id="icons-wrapper">Icons</div><div id="hdd-info-wrapper">HDD-Info</div>
+</div>
+
+<div id="backup-now-wrapper"><button id="backup-now">Backup now!</button></div>
+
+<div id="log-wrapper">
+    Letzte Log-Einträge:
+    <textarea id="log-view" readonly>
+log entry 1
+log entry 2
+log entry 3
+log entry 4
+log entry 5
+    </textarea>
+</div>
+{% endblock %}

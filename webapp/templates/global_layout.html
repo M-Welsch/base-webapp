@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet"
+              type="text/css"
+              href="{{ url_for('webapp.views.dashboard.static', filename='css/global_layout.css') }}">
+        <title>BaSe - Dashboard</title>
+        {% block head %}{% endblock %}
+    </head>
+    <body>
+        <nav>
+            <ul id="nav-link-list">
+                <li class="nav-item"><a class="nav-link" href="/">Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link" href="/">Backup-Einstellungen</a></li>
+                <li class="nav-item"><a class="nav-link" href="/">Backup-Viewer</a></li>
+                <li class="nav-item"><a class="nav-link" href="/">Ereignisse</a></li>
+                <li class="nav-item"><a class="nav-link" href="/">Erweitert</a></li>
+            </ul>
+            <div id="shutdown-timer">
+                BaSe fährt herunter in: XX:YY <button>Pause</button>
+            </div>
+        </nav>
+
+        {% block content %}{% endblock %}
+    </body>
+</html>

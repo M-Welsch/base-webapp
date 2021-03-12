@@ -1,0 +1,55 @@
+#warning-banner {
+    /*margin: 10px;*/
+    width: 100%;
+    height: 40px;
+    background-color: red;
+    color: white;
+    border: 1px solid #fdd;
+    border-radius: 5px;
+}
+
+#center {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#icons-wrapper {
+    flex: 1 1 150px;
+    background-color: #8ff;
+}
+
+#hdd-info-wrapper {
+    flex: 1 1 150px;
+    background-color: #f8f;
+}
+
+#backup-now-wrapper {
+    padding: 30px 0px;
+    display: grid;
+    place-items: center;
+}
+
+#backup-now {
+    width: 15em;
+    height: 3em;
+    font-size: 16px;
+    background-color: #888;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+#backup-now:hover {
+    cursor: pointer;
+    background-color: #999;
+}
+
+#log-wrapper {
+    padding: 20px;
+}
+
+#log-view {
+    width: 100%;
+    height: 6em;
+    resize: none;
+    overflow: hidden;
+}
