@@ -11,17 +11,21 @@
     <body>
         <nav>
             <ul id="nav-link-list">
-                <li class="nav-item"><a class="nav-link" href="/">Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link active-nav-link" href="/">Dashboard</a></li>
                 <li class="nav-item"><a class="nav-link" href="/">Backup-Einstellungen</a></li>
                 <li class="nav-item"><a class="nav-link" href="/">Backup-Viewer</a></li>
                 <li class="nav-item"><a class="nav-link" href="/">Ereignisse</a></li>
                 <li class="nav-item"><a class="nav-link" href="/">Erweitert</a></li>
+                <li class="nav-item-right">
+                    <div id="shutdown-timer">
+                        BaSe fährt herunter in: XX:YY <button id="pause-button">||</button>
+                    </div>
+                </li>
             </ul>
-            <div id="shutdown-timer">
-                BaSe fährt herunter in: XX:YY <button>Pause</button>
-            </div>
         </nav>
 
-        {% block content %}{% endblock %}
+        <section id="content">
+            {% block content %}{% endblock %}
+        </section>
     </body>
 </html>

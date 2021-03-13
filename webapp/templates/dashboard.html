@@ -9,22 +9,31 @@
 
 
 {% block content %}
-<div id="warning-banner">15 ungesehene Warnungen! Hier klicken zum Einsehen.</div>
+
+<div class="warning-banner">
+    <span class="banner-message">15 ungesehene Warnungen!</span>
+    <a href="/" class="banner-link">ansehen</a>
+    <button class="banner-dismiss">×</button>
+</div>
 
 <div id="center">
-    <div id="icons-wrapper">Icons</div><div id="hdd-info-wrapper">HDD-Info</div>
+    <div id="icons-wrapper" class="center-wrapper">
+        <div>Icon1</div><div>Icon2</div><div>Icon3</div><div>Icon4</div><div>Icon5</div>
+    </div>
+    <div id="hdd-info-wrapper" class="center-wrapper">HDD-Info</div>
 </div>
 
 <div id="backup-now-wrapper"><button id="backup-now">Backup now!</button></div>
 
-<div id="log-wrapper">
-    Letzte Log-Einträge:
-    <textarea id="log-view" readonly>
+<div id="log-view-header">
+    <span>Letzte Log-Einträge:</span>
+    <a id="view-log" href="/">alle ansehen</a></div>
+<textarea id="log-view" rows="5" readonly>
 log entry 1
 log entry 2
 log entry 3
 log entry 4
 log entry 5
-    </textarea>
-</div>
+</textarea>
+
 {% endblock %}
