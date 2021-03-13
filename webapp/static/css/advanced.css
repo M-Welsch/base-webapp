@@ -1,26 +1,40 @@
 #adv-columns {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
-    gap: 20px;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 30px;
 }
 
 .adv-column {
     flex: 1 1 350px;
     display: grid;
-    border: 1px dashed black;
+    grid-template-rows: auto;
+    grid-gap: 5px;
 }
+
+
+
+#adv-diagnose {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "heading heading";
+}
+
+#heading-diagnose {
+    grid-area: heading;
+    text-align: center;
+}
+
+
 
 #adv-control {
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto;
     grid-template-areas:
         "heading heading"
         "dock dock"
         "power unpower"
         "mount mount"
         "shutdown shutdown";
-    grid-gap: 10px;
 }
 
 #heading-control {
@@ -33,28 +47,42 @@
 #button-mount {grid-area: mount;}
 #button-shutdown {grid-area: shutdown;}
 
-
-#adv-diagnose {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto;
-    grid-template-areas: "heading heading";
-    grid-gap: 10px;
+.control-button {
+    height: 3em;
+    color: white;
+    background-color: #333;
+    border: none;
+    border-radius: 6px;
+}
+.control-button:hover {
+    background-color: #111;
 }
 
-#heading-diagnose {
-    grid-area: heading;
-    text-align: center;
-}
 
 
 #adv-update {
     grid-template-columns: 1fr;
-    grid-template-rows: auto;
     grid-template-areas: "heading";
-    grid-gap: 10px;
 }
 
 #heading-update {
     grid-area: heading;
     text-align: center;
+}
+
+#sbu-update-browse,
+#sbu-update-submit {
+    display: none;
+}
+
+.update-button {
+    height: 20px;
+    padding: 0px 15px;
+    color: white;
+    background-color: #333;
+    border: none;
+    border-radius: 6px;
+}
+.update-button:hover {
+    background-color: #111;
 }

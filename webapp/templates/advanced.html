@@ -12,20 +12,31 @@
 {% block content %}
 
 <div id="adv-columns">
-    <div id="adv-control" class="adv-column">
-        <h4 id="heading-control">Steuerung</h4>
-        <button id="button-dock">Dock</button>
-        <button id="button-power">Power</button>
-        <button id="button-unpower">Unpower</button>
-        <button id="button-mount">Mount</button>
-        <button id="button-shutdown">Shutdown</button>
-    </div>
     <div id="adv-diagnose" class="adv-column">
         <h4 id="heading-diagnose">Diagnose</h4>
-        <span>a</span><span>b</span><span>c</span><span>d</span>
+        <b>Stromaufnahme:</b><span>torrential current!</span>
+        <b>Systemspannung:</b><span>high voltage!</span>
+        <b>Temperatur:</b><span>cool runnings!</span>
+    </div>
+    <div id="adv-control" class="adv-column">
+        <h4 id="heading-control">Steuerung</h4>
+        <button id="button-dock" class="control-button">Dock</button>
+        <button id="button-power" class="control-button">Power</button>
+        <button id="button-unpower" class="control-button">Unpower</button>
+        <button id="button-mount" class="control-button">Mount</button>
+        <button id="button-shutdown" class="control-button">Shutdown</button>
     </div>
     <div id="adv-update" class="adv-column">
         <h4 id="heading-update">Update</h4>
+        <p>Backup-Kontrolleinheit:</p>
+        <p>Das System ist aktuell.</p>
+        <p>Standby-Kontrolleinheit:</p>
+        <form>
+            <label class="update-button" for="sbu-update-browse">Durchsuchen...</label>
+            <input type="file" id="sbu-update-browse" name="sbu-update-filename">
+            <label class="update-button" for="sbu-update-submit">Upload</label>
+            <input type="submit" id="sbu-update-submit" class="update-button">
+        </form>
     </div>
 </div>
 
