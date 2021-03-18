@@ -5,6 +5,7 @@
 <link rel="stylesheet"
       type="text/css"
       href="{{ url_for('webapp.views.dashboard.static', filename='css/advanced.css') }}">
+<script src="{{ url_for('webapp.views.dashboard.static', filename='js/advanced.js') }}"></script>
 <title>BaSe - Erweiterte Einstellungen</title>
 {% endblock %}
 
@@ -24,7 +25,7 @@
         <button id="button-power" class="control-button">Power</button>
         <button id="button-unpower" class="control-button">Unpower</button>
         <button id="button-mount" class="control-button">Mount</button>
-        <button id="button-shutdown" class="control-button">Shutdown</button>
+        <button id="button-shutdown" class="control-button" onclick="requestShutdown()">Shutdown</button>
     </div>
     <div id="adv-update" class="adv-column">
         <h4 id="heading-update">Update</h4>
