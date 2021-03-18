@@ -47,8 +47,28 @@
     flex: 3 1 auto;
 }
 
+.dashboard-icon {
+    width: 5em;
+    height: auto;
+}
+
 #hdd-info-wrapper {
     flex: 2 1 auto;
+}
+
+#hdd-space-free {
+    width: 8em;
+    height: 8em;
+    background-color: blue;
+    border: 2px solid blue;
+    border-radius: 50%;
+}
+
+#hdd-space-used {
+    width: 8em;
+    height: 8em;
+    background-color: violet;
+    border-radius: 50%;
 }
 
 #backup-now-wrapper {
