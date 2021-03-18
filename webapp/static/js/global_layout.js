@@ -12,28 +12,41 @@ function onDocumentLoad() {
 }
 
 
-let socket = new WebSocket("ws://192.168.178.39:8453");
+setInterval(heartbeat, 10000);
 
-socket.onopen = function(e) {
-  alert("[open] Connection established");
-  alert("Sending to server");
-  socket.send("My name is John");
-};
+function heartbeat() {
+    let socket = new WebSocket("ws://192.168.178.39:8453");
 
-socket.onmessage = function(event) {
-  alert(`[message] Data received from server: ${event.data}`);
-};
+    socket.onopen = function(e) {
+        document.getElementById("not-connected").style.display = "none";
+        document.getElementById("shutdown-timer").style.display = "block";
+    };
 
-socket.onclose = function(event) {
-  if (event.wasClean) {
-    alert(`[close] Connection closed cleanly, code=${event.code} reason=${event.reason}`);
-  } else {
-    // e.g. server process killed or network down
-    // event.code is usually 1006 in this case
-    alert('[close] Connection died');
-  }
-};
+    socket.onerror = function(error) {
+        document.getElementById("shutdown-timer").style.display = "none";
+        document.getElementById("not-connected").style.display = "block";
+    };
+}
 
-socket.onerror = function(error) {
-  alert(`[error] ${error.message}`);
-};
+//SOCKET.onopen = function(e) {
+//    document.getElementById("not-connected").style.display = "none";
+//    document.getElementById("shutdown-timer").style.display = "block";
+//    SOCKET.send("Webapp hello!");
+//};
+//
+//SOCKET.onmessage = function(event) {
+//    alert(`[message] Data received from server: ${event.data}`);
+//};
+//
+//SOCKET.onclose = function(event) {
+////    document.getElementById("shutdown-timer").style.display = "none";
+////    document.getElementById("not-connected").style.display = "block";
+//    if (event.wasClean) {
+////        alert(`[close] Connection closed cleanly, code=${event.code} reason=${event.reason}`);
+//    } else {
+//        // e.g. server process killed or network down
+//        // event.code is usually 1006 in this case
+////        alert('[close] Connection died');
+//    }
+//};
+

@@ -41,8 +41,14 @@ a {
     float: right;
 }
 
-#shutdown-timer {
+#not-connected {
     display: block;
+    padding: 14px 16px;
+    color: #FAA;
+}
+
+#shutdown-timer {
+    display: none;
     padding: 8px 16px;
     color: white;
 }
