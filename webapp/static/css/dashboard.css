@@ -1,31 +1,25 @@
 .warning-banner {
-    margin: 3px 0;
+    box-sizing: border-box;
     padding: 12px;
+    overflow: hidden;
     display: flex;
-    align-items:center;
-    gap: 12px;
+    align-items: center;
+    gap: 0.5em;
     background-color: #FAA;
-    border: 1px solid #fdd;
     border-radius: 6px;
+    transition: opacity 0.3s, height 0.5s, padding 0.5s;
 }
 
 .banner-message {
-    flex: 1 1 150px;
-    float: left;
-}
-
-.banner-link {
-    flex: 0 1 auto;
-    float: right;
+    flex: auto;
 }
 
 .banner-dismiss {
-    padding: 0px 0.2em;
-    flex: 0 1 auto;
-    float: right;
+    padding: 0px 0.3em;
     color: #C00;
     background-color: transparent;
     border: none;
+    cursor: pointer;
 }
 
 #center {
