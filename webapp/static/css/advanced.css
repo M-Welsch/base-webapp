@@ -31,9 +31,9 @@
     grid-template-columns: 1fr 1fr;
     grid-template-areas:
         "heading heading"
-        "dock dock"
+        "dock undock"
         "power unpower"
-        "mount mount"
+        "mount unmount"
         "shutdown shutdown";
 }
 
@@ -42,9 +42,11 @@
     text-align: center;
 }
 #button-dock {grid-area: dock;}
+#button-undock {grid-area: undock;}
 #button-power {grid-area: power;}
 #button-unpower {grid-area: unpower;}
 #button-mount {grid-area: mount;}
+#button-unmount {grid-area: unmount;}
 #button-shutdown {grid-area: shutdown;}
 
 .control-button {
@@ -56,6 +58,9 @@
 }
 .control-button:hover {
     background-color: #111;
+}
+.control-button:disabled {
+    background-color: #aaa;
 }
 
 

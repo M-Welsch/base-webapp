@@ -15,17 +15,17 @@
 <div id="adv-columns">
     <div id="adv-diagnose" class="adv-column">
         <h4 id="heading-diagnose">Diagnose</h4>
-        <b>Stromaufnahme:</b><span>torrential current!</span>
-        <b>Systemspannung:</b><span>high voltage!</span>
-        <b>Temperatur:</b><span>cool runnings!</span>
+        <div id="diagnose-container"></div>
     </div>
     <div id="adv-control" class="adv-column">
         <h4 id="heading-control">Steuerung</h4>
-        <button id="button-dock" class="control-button">Dock</button>
-        <button id="button-power" class="control-button">Power</button>
-        <button id="button-unpower" class="control-button">Unpower</button>
-        <button id="button-mount" class="control-button">Mount</button>
-        <button id="button-shutdown" class="control-button" onclick="requestShutdown()">Shutdown</button>
+        <button id="button-dock" class="control-button" onclick="buttonSignal('dock')">Dock</button>
+        <button id="button-undock" class="control-button" onclick="buttonSignal('undock')">Undock</button>
+        <button id="button-power" class="control-button" onclick="buttonSignal('power')">Power</button>
+        <button id="button-unpower" class="control-button" onclick="buttonSignal('unpower')">Unpower</button>
+        <button id="button-mount" class="control-button" onclick="buttonSignal('mount')">Mount</button>
+        <button id="button-unmount" class="control-button" onclick="buttonSignal('unmount')">Unmount</button>
+        <button id="button-shutdown" class="control-button" onclick="buttonSignal('shutdown')">Shutdown</button>
     </div>
     <div id="adv-update" class="adv-column">
         <h4 id="heading-update">Update</h4>

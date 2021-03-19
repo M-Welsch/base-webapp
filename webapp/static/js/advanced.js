@@ -1,8 +1,7 @@
-function requestShutdown() {
-    let socket = new WebSocket("ws://192.168.178.39:8453");
-
+function buttonSignal(message_code) {
+    let socket = new WebSocket(BASE_ADDRESS);
     socket.onopen = function(e) {
-        socket.send("shutdown_request");
+        socket.send(message_code);
     };
 
     socket.onerror = function(error) {

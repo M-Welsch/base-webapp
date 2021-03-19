@@ -1,3 +1,5 @@
+const BASE_ADDRESS = "ws://192.168.0.61:8453"
+
 
 function onDocumentLoad() {
     let page = window.location.pathname.slice(1);
@@ -12,41 +14,30 @@ function onDocumentLoad() {
 }
 
 
-setInterval(heartbeat, 10000);
+setInterval(heartbeat, 1000);
 
 function heartbeat() {
-    let socket = new WebSocket("ws://192.168.178.39:8453");
+    let socket = new WebSocket(BASE_ADDRESS);
 
     socket.onopen = function(e) {
         document.getElementById("not-connected").style.display = "none";
         document.getElementById("shutdown-timer").style.display = "block";
+        socket.send("heartbeat?");
     };
 
     socket.onerror = function(error) {
         document.getElementById("shutdown-timer").style.display = "none";
         document.getElementById("not-connected").style.display = "block";
     };
+
+    socket.onmessage = function(event) {
+        let current_status = JSON.parse(event.data)
+        console.log(current_status);
+        distribute_data(current_status);
+    };
 }
 
-//SOCKET.onopen = function(e) {
-//    document.getElementById("not-connected").style.display = "none";
-//    document.getElementById("shutdown-timer").style.display = "block";
-//    SOCKET.send("Webapp hello!");
-//};
-//
-//SOCKET.onmessage = function(event) {
-//    alert(`[message] Data received from server: ${event.data}`);
-//};
-//
-//SOCKET.onclose = function(event) {
-////    document.getElementById("shutdown-timer").style.display = "none";
-////    document.getElementById("not-connected").style.display = "block";
-//    if (event.wasClean) {
-////        alert(`[close] Connection closed cleanly, code=${event.code} reason=${event.reason}`);
-//    } else {
-//        // e.g. server process killed or network down
-//        // event.code is usually 1006 in this case
-////        alert('[close] Connection died');
-//    }
-//};
-
+function distribute_data(current_status) {
+    document.getElementById("button-dock").disabled = current_status["docked"];
+    document.getElementById("button-undock").disabled = !current_status["docked"];
+}
