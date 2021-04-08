@@ -12,24 +12,36 @@
 
 {% block content %}
 
-<div class="warning-banner">
-    <span class="banner-message">15 ungesehene Warnungen!</span>
-    <a href="/" class="banner-link">ansehen</a>
-    <button class="banner-dismiss" onclick="dismissWarningBanner()">×</button>
+<div id="warning-banner">
+    <span id="banner-message"><span id="banner-warning-count">0</span> ungesehene Warnungen!</span>
+    <a href="/" id="banner-link">ansehen</a>
+    <button id="banner-dismiss" onclick="dismissWarningBanner()">×</button>
 </div>
 
 <div id="center">
     <div id="icons-wrapper" class="center-wrapper">
-        <div><img class="dashboard-icon" src="{{ url_for('webapp.views.dashboard.static', filename='image/schedule.svg') }}"></div>
-        <div><img class="dashboard-icon" src="{{ url_for('webapp.views.dashboard.static', filename='image/dock.svg') }}"></div>
-        <div><img class="dashboard-icon" src="{{ url_for('webapp.views.dashboard.static', filename='image/power.svg') }}"></div>
-        <div><img class="dashboard-icon" src="{{ url_for('webapp.views.dashboard.static', filename='image/mount.svg') }}"></div>
-        <div><img class="dashboard-icon" src="{{ url_for('webapp.views.dashboard.static', filename='image/copy.svg') }}"></div>
+        <div class="centered-column">
+            <img class="dashboard-icon" src="{{ url_for('webapp.views.dashboard.static', filename='image/schedule.svg') }}">
+            <div id="next-backup-due-text">0:00:00</div>
+        </div>
+        <div>
+            <img class="dashboard-icon" id="dock-icon" src="{{ url_for('webapp.views.dashboard.static', filename='image/dock.svg') }}">
+        </div>
+        <div>
+            <img class="dashboard-icon" id="power-icon" src="{{ url_for('webapp.views.dashboard.static', filename='image/power.svg') }}">
+        </div>
+        <div>
+            <img class="dashboard-icon" id="mount-icon" src="{{ url_for('webapp.views.dashboard.static', filename='image/mount.svg') }}">
+        </div>
+        <div>
+            <img class="dashboard-icon" id="backup-icon" src="{{ url_for('webapp.views.dashboard.static', filename='image/copy.svg') }}">
+        </div>
     </div>
     <div id="hdd-info-wrapper" class="center-wrapper">
         <div id="hdd-space-free">
-<!--            <div id="hdd-space-used"></div>-->
+            <div id="hdd-space-used"></div>
         </div>
+        <span><span id="backup-hdd-usage-text">0</span><span>% belegt</span></span>
     </div>
 </div>
 
@@ -38,12 +50,6 @@
 <div id="log-view-header">
     <span>Letzte Log-Einträge:</span>
     <a id="view-log" href="/">alle ansehen</a></div>
-<textarea id="log-view" rows="5" readonly>
-log entry 1
-log entry 2
-log entry 3
-log entry 4
-log entry 5
-</textarea>
+<textarea id="log-view" rows="5" readonly></textarea>
 
 {% endblock %}
