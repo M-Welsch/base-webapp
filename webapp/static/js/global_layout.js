@@ -1,4 +1,4 @@
-const BASE_ADDRESS = "ws://192.168.0.61:8453"
+const BASE_ADDRESS = "ws://192.168.178.39:8453"
 
 
 function onDocumentLoad() {
@@ -32,17 +32,13 @@ function heartbeat() {
 
     socket.onmessage = function(event) {
         let current_status = JSON.parse(event.data)
-        console.log(current_status);
+//        console.log(current_status);
         distribute_data(current_status);
     };
 }
 
-function distribute_data(current_status) {
-    // For Advanced:
-    document.getElementById("button-dock").disabled = current_status["docked"];
-    document.getElementById("button-undock").disabled = !current_status["docked"];
 
-    // For Dashboard:
+function pass_data_to_dashboard( current_status) {
     document.getElementById("backup-hdd-usage-text").innerHTML = ~~(current_status["backup_hdd_usage"] *100);
     document.getElementById("hdd-space-used").style.width = (current_status["backup_hdd_usage"] * 100) + "%";
     document.getElementById("log-view").innerHTML = current_status["log_tail"].join("\n");
@@ -73,6 +69,23 @@ function distribute_data(current_status) {
         document.getElementById("backup-icon").style.opacity = "100%";
     } else {
         document.getElementById("backup-icon").style.opacity = "50%";
+    }
+}
+
+function pass_data_to_advanced( current_status ) {
+    document.getElementById("button-dock").disabled = current_status["docked"];
+    document.getElementById("button-undock").disabled = !current_status["docked"];
+}
+
+function distribute_data( current_status ) {
+    let page = window.location.pathname.slice( 1 );
+    switch ( page ) {
+        case "":
+            pass_data_to_dashboard( current_status );
+            break;
+        case "advanced":
+            pass_data_to_advanced( current_status );
+            break;
     }
 }
 
