@@ -19,25 +19,29 @@
     </div>
     <div id="adv-control" class="adv-column">
         <h4 id="heading-control">Steuerung</h4>
-        <button id="button-dock" class="control-button" onclick="buttonSignal('dock')">Dock</button>
-        <button id="button-undock" class="control-button" onclick="buttonSignal('undock')">Undock</button>
-        <button id="button-power" class="control-button" onclick="buttonSignal('power')">Power</button>
-        <button id="button-unpower" class="control-button" onclick="buttonSignal('unpower')">Unpower</button>
-        <button id="button-mount" class="control-button" onclick="buttonSignal('mount')">Mount</button>
-        <button id="button-unmount" class="control-button" onclick="buttonSignal('unmount')">Unmount</button>
-        <button id="button-shutdown" class="control-button" onclick="buttonSignal('shutdown')">Shutdown</button>
+        <div id="control-container">
+            <button id="button-dock" class="control-button" onclick="buttonSignal('dock')">Dock</button>
+            <button id="button-undock" class="control-button" onclick="buttonSignal('undock')">Undock</button>
+            <button id="button-power" class="control-button" onclick="buttonSignal('power')">Power</button>
+            <button id="button-unpower" class="control-button" onclick="buttonSignal('unpower')">Unpower</button>
+            <button id="button-mount" class="control-button" onclick="buttonSignal('mount')">Mount</button>
+            <button id="button-unmount" class="control-button" onclick="buttonSignal('unmount')">Unmount</button>
+            <button id="button-shutdown" class="control-button" onclick="buttonSignal('shutdown')">Shutdown</button>
+        </div>
     </div>
     <div id="adv-update" class="adv-column">
         <h4 id="heading-update">Update</h4>
-        <p>Backup-Kontrolleinheit:</p>
-        <p>Das System ist aktuell.</p>
-        <p>Standby-Kontrolleinheit:</p>
-        <form>
-            <label class="update-button" for="sbu-update-browse">Durchsuchen...</label>
-            <input type="file" id="sbu-update-browse" name="sbu-update-filename">
-            <label class="update-button" for="sbu-update-submit">Upload</label>
-            <input type="submit" id="sbu-update-submit" class="update-button">
-        </form>
+        <div id="update-container">
+            <p>Backup-Kontrolleinheit:</p>
+            <p>Das System ist aktuell.</p>
+            <p>Standby-Kontrolleinheit:</p>
+            <form>
+                <label class="update-button" for="sbu-update-browse">Durchsuchen...</label>
+                <input type="file" id="sbu-update-browse" name="sbu-update-filename">
+                <label class="update-button" for="sbu-update-submit">Upload</label>
+                <input type="submit" id="sbu-update-submit" class="update-button">
+            </form>
+        </div>
     </div>
 </div>
 

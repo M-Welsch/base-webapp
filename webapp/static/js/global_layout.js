@@ -37,54 +37,14 @@ function heartbeat() {
     };
 }
 
-
-function pass_data_to_dashboard( current_status) {
-    document.getElementById("backup-hdd-usage-text").innerHTML = ~~(current_status["backup_hdd_usage"] *100);
-    document.getElementById("hdd-space-used").style.width = (current_status["backup_hdd_usage"] * 100) + "%";
-    document.getElementById("log-view").innerHTML = current_status["log_tail"].join("\n");
-    if (~~current_status["recent_warnings_count"] > 0) {
-        document.getElementById("warning-banner").style.display = "flex";
-    } else {
-        document.getElementById("warning-banner").style.display = "none";
-    }
-    document.getElementById("banner-warning-count").innerHTML = current_status["recent_warnings_count"];
-    document.getElementById("next-backup-due-text").innerHTML = current_status["next_backup_due"];
-
-    if (current_status["docked"]) {
-        document.getElementById("dock-icon").style.opacity = "100%";
-    } else {
-        document.getElementById("dock-icon").style.opacity = "50%";
-    }
-    if (current_status["powered"]) {
-        document.getElementById("power-icon").style.opacity = "100%";
-    } else {
-        document.getElementById("power-icon").style.opacity = "50%";
-    }
-    if (current_status["mounted"]) {
-        document.getElementById("mount-icon").style.opacity = "100%";
-    } else {
-        document.getElementById("mount-icon").style.opacity = "50%";
-    }
-    if (current_status["backup_running"]) {
-        document.getElementById("backup-icon").style.opacity = "100%";
-    } else {
-        document.getElementById("backup-icon").style.opacity = "50%";
-    }
-}
-
-function pass_data_to_advanced( current_status ) {
-    document.getElementById("button-dock").disabled = current_status["docked"];
-    document.getElementById("button-undock").disabled = !current_status["docked"];
-}
-
 function distribute_data( current_status ) {
     let page = window.location.pathname.slice( 1 );
     switch ( page ) {
         case "":
-            pass_data_to_dashboard( current_status );
+            displayDashboardData( current_status );
             break;
         case "advanced":
-            pass_data_to_advanced( current_status );
+            displayAdvancedData( current_status );
             break;
     }
 }

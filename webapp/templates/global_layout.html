@@ -6,6 +6,8 @@
               type="text/css"
               href="{{ url_for('webapp.views.dashboard.static', filename='css/global_layout.css') }}">
         <script src="{{ url_for('webapp.views.dashboard.static', filename='js/global_layout.js') }}"></script>
+        <link rel="shortcut icon"
+              href="{{ url_for('webapp.views.dashboard.static', filename='image/favicon.ico') }}">
         <title>BaSe</title>
         {% block head %}{% endblock %}
     </head>

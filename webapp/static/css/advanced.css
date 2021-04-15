@@ -16,8 +16,9 @@
 
 
 #adv-diagnose {
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas: "heading heading";
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 #heading-diagnose {
@@ -25,16 +26,29 @@
     text-align: center;
 }
 
+#diagnose-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 5px;
+}
+
 
 
 #adv-control {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#control-container {
+    display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-areas:
-        "heading heading"
         "dock undock"
         "power unpower"
         "mount unmount"
         "shutdown shutdown";
+    grid-gap: 6px;
 }
 
 #heading-control {
@@ -66,8 +80,15 @@
 
 
 #adv-update {
-    grid-template-columns: 1fr;
-    grid-template-areas: "heading";
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#update-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 
 #heading-update {
