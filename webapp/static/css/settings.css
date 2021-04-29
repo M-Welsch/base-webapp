@@ -1,0 +1,11 @@
+#top {
+    display: flex;
+}
+
+#schedule-column {
+    flex: 1;
+}
+
+#network-column {
+    flex: 1;
+}

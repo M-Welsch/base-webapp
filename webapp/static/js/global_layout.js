@@ -11,6 +11,10 @@ function onDocumentLoad() {
 
     if (!page) {page = "dashboard"}
     document.getElementById("link-"+page).classList.add("active-nav-link");
+
+    if (page == "settings") {
+        requestConfigData();
+    }
 }
 
 
@@ -50,7 +54,7 @@ function distribute_data( current_status ) {
 }
 
 
-function ready(callbackFunction){
+function ready(callbackFunction) {
     if(document.readyState != 'loading') callbackFunction(event);
     else document.addEventListener("DOMContentLoaded", callbackFunction);
 }

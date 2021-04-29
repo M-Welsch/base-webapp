@@ -1,0 +1,100 @@
+{% extends "global_layout.html" %}
+
+
+{% block head %}
+<link rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('webapp.views.dashboard.static', filename='css/settings.css') }}">
+<script src="{{ url_for('webapp.views.dashboard.static', filename='js/settings.js') }}"></script>
+<title>BaSe - Konfiguration</title>
+{% endblock %}
+
+
+{% block content %}
+
+<div id="top">
+    <div id="schedule-column">
+        <h4>Zeitplan</h4>
+        <ul>
+            <li>
+                Intervall:
+                <select id="interval">
+                    <option value="months">monatlich</option>
+                    <option value="weeks">wöchentlich</option>
+                    <option value="days">täglich</option>
+                </select>
+            </li>
+            <li id="day-of-month">
+                Monatstag:
+                <select>
+                    {% for index in range(28) %}
+                        <option value="{{index + 1}}">{{index + 1}}</option>
+                    {% endfor %}
+                </select>
+            </li>
+            <li id="day-of-week">
+                Wochentag:
+                <select>
+                    {% for day in ["Montag", "Dienstag", "Mittwoch", "Donnestag", "Freitag", "Samstag", "Sonntag"] %}
+                        <option value="{{loop.index - 1}}">{{day}}</option>
+                    {% endfor %}
+                </select>
+            </li>
+            <li>Uhrzeit: <input type="time" id="time-of-day"></li>
+        </ul>
+    </div>
+    <div id="network-column">
+        <h4>Protokoll</h4>
+        <ul>
+            <li>
+                <input type="radio" name="protocol" value="ssh" id="ssh">
+                <label for="ssh">SSH (sicherer)</label>
+            </li>
+            <li>
+                <input type="radio" name="protocol" value="samba" id="samba" checked>
+                <label for="samba">Samba (schneller)</label>
+            </li>
+        </ul>
+        <h4>Quelle</h4>
+        <ul id="ssh-source-parameters">
+            <li><input name="source-ip" placeholder="IP-Adresse" id="ssh-host"></li>
+            <li><input name="source-user" placeholder="Benutzername" id="ssh-user"></li>
+        </ul>
+        <ul id="smb-source-parameters">
+            <li><input name="source-ip" placeholder="IP-Adresse" id="smb-host"></li>
+            <li><input name="source-user" placeholder="Benutzername" id="smb-user"></li>
+        </ul>
+    </div>
+</div>
+<div id="bottom">
+    <h4>Verhalten</h4>
+    <ul>
+        <li>
+            <input type="checkbox" name="shutdown_between_backups" id="shutdown-between-backups">
+            <label for="shutdown-between-backups">
+                Zwischen Backups nach
+                <input type="number" id="shutdown-delay-minutes" min="0">
+                Minuten herunterfahren
+            </label>
+        </li>
+        <li>
+            <input type="checkbox" name="pre-backup-hook" id="use-pre-backup-hook">
+            <label for="use-pre-backup-hook">
+                Vor dem Backup ausführen:
+                <input id="pre-backup-hook-path">
+            </label>
+        </li>
+        <li>
+            <input type="checkbox" name="post-backup-hook" id="use-post-backup-hook">
+            <label for="use-post-backup-hook">
+                Nach dem Backup ausführen:
+                <input id="post-backup-hook-path">
+            </label>
+        </li>
+    </ul>
+</div>
+<div>
+    <button id="save-config" onclick="onSave()">speichern</button>
+</div>
+
+{% endblock %}
