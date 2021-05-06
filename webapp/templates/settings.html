@@ -18,23 +18,23 @@
         <ul>
             <li>
                 Intervall:
-                <select id="interval">
+                <select id="interval" onchange="onIntervalChange()">
                     <option value="months">monatlich</option>
                     <option value="weeks">wöchentlich</option>
                     <option value="days">täglich</option>
                 </select>
             </li>
-            <li id="day-of-month">
+            <li  id="day-of-month-item">
                 Monatstag:
-                <select>
+                <select id="day-of-month">
                     {% for index in range(28) %}
                         <option value="{{index + 1}}">{{index + 1}}</option>
                     {% endfor %}
                 </select>
             </li>
-            <li id="day-of-week">
+            <li  id="day-of-week-item">
                 Wochentag:
-                <select>
+                <select id="day-of-week">
                     {% for day in ["Montag", "Dienstag", "Mittwoch", "Donnestag", "Freitag", "Samstag", "Sonntag"] %}
                         <option value="{{loop.index - 1}}">{{day}}</option>
                     {% endfor %}
@@ -47,12 +47,12 @@
         <h4>Protokoll</h4>
         <ul>
             <li>
-                <input type="radio" name="protocol" value="ssh" id="ssh">
+                <input type="radio" name="protocol" value="ssh" id="ssh" onchange="onProtocolChange()">
                 <label for="ssh">SSH (sicherer)</label>
             </li>
             <li>
-                <input type="radio" name="protocol" value="samba" id="samba" checked>
-                <label for="samba">Samba (schneller)</label>
+                <input type="radio" name="protocol" value="smb" id="smb" onchange="onProtocolChange()">
+                <label for="smb">Samba (schneller)</label>
             </li>
         </ul>
         <h4>Quelle</h4>

@@ -30,3 +30,16 @@ function populateDiagnoseTable( data ) {
         appendSpan(value);
     }
 }
+
+
+function setBrightness() {
+    let brightness = document.getElementById("slider-brightness").value;
+    document.getElementById("brightness-value").innerHTML = brightness;
+    sendData("display brightness: "+brightness, function(){});
+}
+
+function onDisplayTextSend() {
+    let line1 = document.getElementById("display-line-1").value;
+    let line2 = document.getElementById("display-line-2").value;
+    sendData("display text: "+line1+line2, function(){});
+}

@@ -77,6 +77,12 @@
     background-color: #aaa;
 }
 
+#display-text-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
 
 
 #adv-update {
@@ -111,4 +117,12 @@
 }
 .update-button:hover {
     background-color: #111;
+}
+
+
+
+#adv-settings {
+    /*display: flex;
+    flex-direction: column;*/
+    gap: 20px;
 }

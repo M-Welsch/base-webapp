@@ -1,6 +1,23 @@
 const BASE_ADDRESS = "ws://192.168.178.39:8453"
 
 
+function sendData(payload, callback) {
+    let socket = new WebSocket(BASE_ADDRESS);
+    socket.onopen = function(e) {
+        socket.send(payload);
+    };
+
+    socket.onerror = function(error) {
+        console.log(error);
+        alert('[close] Connection died');
+    };
+
+    socket.onmessage = function(event) {
+        callback(event.data);
+    };
+}
+
+
 function onDocumentLoad() {
     let page = window.location.pathname.slice(1);
     let items = document.getElementsByClassName("nav-link");
@@ -13,7 +30,7 @@ function onDocumentLoad() {
     document.getElementById("link-"+page).classList.add("active-nav-link");
 
     if (page == "settings") {
-        requestConfigData();
+        onSettingsLoad();
     }
 }
 

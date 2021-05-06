@@ -28,6 +28,12 @@
             <button id="button-unmount" class="control-button" onclick="buttonSignal('unmount')">Unmount</button>
             <button id="button-shutdown" class="control-button" onclick="buttonSignal('shutdown')">Shutdown</button>
         </div>
+        <div id="display-text-container">
+            <p>Display-Text ändern:</p>
+            <input id="display-line-1" maxlength="16">
+            <input id="display-line-2" maxlength="16">
+            <button onclick="onDisplayTextSend()">Senden</button>
+        </div>
     </div>
     <div id="adv-update" class="adv-column">
         <h4 id="heading-update">Update</h4>
@@ -42,6 +48,13 @@
                 <input type="submit" id="sbu-update-submit" class="update-button">
             </form>
         </div>
+    </div>
+    <div id="adv-settings" class="adv-column">
+        <h4 id="heading-settings">Erweiterte Einstellungen</h4>
+        <div>
+            Bildschirmhelligkeit: <span id="brightness-value"></span> %
+        </div>
+        <input type="range" min="0" max="100" id="slider-brightness" onchange="setBrightness()">
     </div>
 </div>
 
