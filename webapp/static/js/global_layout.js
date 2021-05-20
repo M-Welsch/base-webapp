@@ -29,9 +29,7 @@ function onDocumentLoad() {
     if (!page) {page = "dashboard"}
     document.getElementById("link-"+page).classList.add("active-nav-link");
 
-    if (page == "settings") {
-        onSettingsLoad();
-    }
+    onPageLoad();
 }
 
 

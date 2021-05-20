@@ -1,3 +1,5 @@
+function onPageLoad() {}
+
 function buttonSignal(message_code) {
     let socket = new WebSocket(BASE_ADDRESS);
     socket.onopen = function(e) {

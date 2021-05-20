@@ -1,4 +1,4 @@
-function onSettingsLoad() {
+function onPageLoad() {
     sendData("request_config", onSettingsReceive);
 }
 

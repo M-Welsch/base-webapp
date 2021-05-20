@@ -1,3 +1,4 @@
+function onPageLoad() {}
 
 function dismissWarningBanner() {
     let banners = document.getElementById("warning-banner");
@@ -9,8 +10,7 @@ function dismissWarningBanner() {
 }
 
 function displayDashboardData( current_status ) {
-    document.getElementById("backup-hdd-usage-text").innerHTML = ~~(current_status["backup_hdd_usage"] *100);
-    document.getElementById("hdd-space-used").style.width = (current_status["backup_hdd_usage"] * 100) + "%";
+    setDiscUsage(current_status["diagnose"]["Backup-HDD verfügbar"], current_status["backup_hdd_usage"]);
     document.getElementById("log-view").innerHTML = current_status["log_tail"].join("\n");
     if (~~current_status["recent_warnings_count"] > 0) {
         document.getElementById("warning-banner").style.display = "flex";
@@ -23,21 +23,37 @@ function displayDashboardData( current_status ) {
     if (current_status["docked"]) {
         document.getElementById("dock-icon").style.opacity = "100%";
     } else {
-        document.getElementById("dock-icon").style.opacity = "50%";
+        document.getElementById("dock-icon").style.opacity = "30%";
     }
     if (current_status["powered"]) {
         document.getElementById("power-icon").style.opacity = "100%";
     } else {
-        document.getElementById("power-icon").style.opacity = "50%";
+        document.getElementById("power-icon").style.opacity = "30%";
     }
     if (current_status["mounted"]) {
         document.getElementById("mount-icon").style.opacity = "100%";
     } else {
-        document.getElementById("mount-icon").style.opacity = "50%";
+        document.getElementById("mount-icon").style.opacity = "30%";
     }
     if (current_status["backup_running"]) {
         document.getElementById("backup-icon").style.opacity = "100%";
     } else {
-        document.getElementById("backup-icon").style.opacity = "50%";
+        document.getElementById("backup-icon").style.opacity = "30%";
+    }
+}
+
+function setDiscUsage(availability, percentage) {
+    function setElements(bgColor, display1, display2) {
+        document.getElementById("hdd-space-free").style.backgroundColor = bgColor;
+        document.getElementById("backup-hdd-usage-text").style.display = display1;
+        document.getElementById("backup-hdd-not-available-text").style.display = display2;
+    }
+
+    document.getElementById("backup-hdd-usage-percentage").innerHTML = ~~percentage;
+    document.getElementById("hdd-space-used").style.width = percentage + "%";
+    if ( availability == "available" ) {
+        setElements("#333", "block", "none");
+    } else {
+        setElements("gray", "none", "block");
     }
 }
