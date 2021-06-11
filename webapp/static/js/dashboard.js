@@ -1,4 +1,6 @@
-function onPageLoad() {}
+function onPageLoad() {
+    document.getElementById("abort-backup-wrapper").style.display = "none";
+}
 
 function dismissWarningBanner() {
     let banners = document.getElementById("warning-banner");
@@ -56,4 +58,40 @@ function setDiscUsage(availability, percentage) {
     } else {
         setElements("gray", "none", "block");
     }
+}
+
+function backupNow() {
+    let socket = new WebSocket(BASE_ADDRESS);
+    socket.onopen = function(e) {
+        socket.send("backup_now");
+    };
+
+    socket.onerror = function(error) {
+        alert('[close] Connection died');
+    };
+
+    socket.onmessage = function(event) {
+        if (event.data == "backup_request_acknowledged") {
+            document.getElementById("backup-now-wrapper").style.display = "none";
+            document.getElementById("abort-backup-wrapper").style.display = "grid";
+        }
+    };
+}
+
+function backupAbort() {
+    let socket = new WebSocket(BASE_ADDRESS);
+    socket.onopen = function(e) {
+        socket.send("backup_abort");
+    };
+
+    socket.onerror = function(error) {
+        alert('[close] Connection died');
+    };
+
+    socket.onmessage = function(event) {
+        if (event.data == "backup_abort_acknowledged") {
+            document.getElementById("abort-backup-wrapper").style.display = "none";
+            document.getElementById("backup-now-wrapper").style.display = "grid";
+        }
+    };
 }

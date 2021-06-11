@@ -9,15 +9,15 @@ function onPageLoad() {
     };
 
     socket.onmessage = function(event) {
-        let backup_index = JSON.parse(event.data)
-        update_backup_index(backup_index);
+        let backupIndex = JSON.parse(event.data)
+        updateBackupIndex(backupIndex);
     };
 }
 
-function update_backup_index(backup_index) {
+function updateBackupIndex(backupIndex) {
     let table = document.getElementById("backup-index-list");
     table.innerHTML = "";
-    for (let i = 0; i < backup_index.length; i++) {
-        table.innerHTML += "<li>"+backup_index[i]+"</li>"
+    for (let i = 0; i < backupIndex.length; i++) {
+        table.innerHTML += "<li>"+backupIndex[i]+"</li>";
     }
 }

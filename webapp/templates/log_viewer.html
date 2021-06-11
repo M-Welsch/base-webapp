@@ -1,0 +1,21 @@
+{% extends "global_layout.html" %}
+
+
+{% block head %}
+<link rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('webapp.views.dashboard.static', filename='css/log_viewer.css') }}">
+<script src="{{ url_for('webapp.views.dashboard.static', filename='js/log_viewer.js') }}"></script>
+<title>BaSe - Backup-Viewer</title>
+{% endblock %}
+
+
+{% block content %}
+
+<div id="log-selection">
+    <select name="log-select" id="log-select" onchange="onLogSelect(this)"></select>
+</div>
+
+<textarea id="log-view-detailed" readonly></textarea>
+
+{% endblock %}

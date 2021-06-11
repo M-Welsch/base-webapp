@@ -79,13 +79,13 @@
     display: none;
 }
 
-#backup-now-wrapper {
+.backup-button-wrapper {
     margin-bottom: 30px;
     display: grid;
     place-items: center;
 }
 
-#backup-now {
+.backup-button {
     width: 15em;
     height: 3em;
     font-size: 16px;
@@ -95,9 +95,17 @@
     border-radius: 5px;
 }
 
-#backup-now:hover {
+.backup-button:hover {
     cursor: pointer;
     background-color: #111;
+}
+
+#backup-now {
+    border: 2px solid #3569AD;
+}
+
+#backup-stop {
+    border: 2px solid #AD0000;
 }
 
 #log-view-header {

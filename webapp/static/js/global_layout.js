@@ -26,7 +26,7 @@ function onDocumentLoad() {
         items[i].classList.remove("active-nav-link");
     }
 
-    if (!page) {page = "dashboard"}
+    if ( !page ) { page = "dashboard" }
     document.getElementById("link-"+page).classList.add("active-nav-link");
 
     onPageLoad();

@@ -1,0 +1,17 @@
+#log-select {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+#log-view-detailed {
+    padding: 8px;
+    width: 100%;
+    box-sizing: border-box;
+    resize: none;
+    overflow: hidden;
+    font-family: "Courier New", Geneva, sans-serif;
+    color: #AAA;
+    background-color: black;
+    border: none;
+    resize: none;
+}
