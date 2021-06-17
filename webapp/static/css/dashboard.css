@@ -108,6 +108,51 @@
     border: 2px solid #AD0000;
 }
 
+#backup-status-wrapper {
+    --angle: 0deg;
+    padding: 10px;
+    margin: 20px 0px;
+
+    /*width: 1200px;
+    height: 100px;*/
+
+    border: 3px solid;
+    border-radius: 5px;
+    border-image: conic-gradient( from var(--angle), #9ab3d3, #3569AD, #9ab3d3, #9ab3d3, #3569AD, #9ab3d3, #9ab3d3, #9ab3d3 ) 1;
+    animation: 4s rotate linear infinite;
+}
+
+@keyframes rotate {
+    0%   {--angle: 0deg;}
+    10%  {--angle: 36deg;}
+    20%  {--angle: 72deg;}
+    30%  {--angle: 108deg;}
+    40%  {--angle: 144deg;}
+    50%  {--angle: 180deg;}
+    60%  {--angle: 216deg;}
+    70%  {--angle: 252deg;}
+    80%  {--angle: 288deg;}
+    90%  {--angle: 324deg;}
+    100% {--angle: 360deg;}
+}
+
+/*@keyframes rotate {
+    from  {--angle: 0deg;}
+    to    {--angle: 360deg;}
+}*/
+
+/*@keyframes rotate {
+  to {
+    --angle: 360deg;
+  }
+}*/
+
+/*@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}*/
+
 #log-view-header {
     margin: 3px 0;
 }
