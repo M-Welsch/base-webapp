@@ -1,14 +1,7 @@
 function onPageLoad() {}
 
 function buttonSignal(message_code) {
-    let socket = new WebSocket(BASE_ADDRESS);
-    socket.onopen = function(e) {
-        socket.send(message_code);
-    };
-
-    socket.onerror = function(error) {
-        alert('[close] Connection died');
-    };
+    sendMessageToBcu(message_code);
 }
 
 function displayAdvancedData( current_status ) {
@@ -37,11 +30,11 @@ function populateDiagnoseTable( data ) {
 function setBrightness() {
     let brightness = document.getElementById("slider-brightness").value;
     document.getElementById("brightness-value").innerHTML = brightness;
-    sendData("display brightness: "+brightness, function(){});
+    sendMessageToBcu( "display brightness: "+brightness );
 }
 
 function onDisplayTextSend() {
     let line1 = document.getElementById("display-line-1").value;
     let line2 = document.getElementById("display-line-2").value;
-    sendData("display text: "+line1+line2, function(){});
+    sendMessageToBcu( "display text: "+line1+line2 );
 }

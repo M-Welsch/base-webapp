@@ -61,37 +61,25 @@ function setDiscUsage(availability, percentage) {
 }
 
 function backupNow() {
-    let socket = new WebSocket(BASE_ADDRESS);
-    socket.onopen = function(e) {
-        socket.send("backup_now");
-    };
-
-    socket.onerror = function(error) {
-        alert('[close] Connection died');
-    };
-
-    socket.onmessage = function(event) {
-        if (event.data == "backup_request_acknowledged") {
-            document.getElementById("backup-now-wrapper").style.display = "none";
-            document.getElementById("abort-backup-wrapper").style.display = "grid";
+    sendMessageToBcu(
+        "backup_now",
+        function(answer) {
+            if (answer == "backup_request_acknowledged") {
+                document.getElementById("backup-now-wrapper").style.display = "none";
+                document.getElementById("abort-backup-wrapper").style.display = "grid";
+            }
         }
-    };
+    );
 }
 
 function backupAbort() {
-    let socket = new WebSocket(BASE_ADDRESS);
-    socket.onopen = function(e) {
-        socket.send("backup_abort");
-    };
-
-    socket.onerror = function(error) {
-        alert('[close] Connection died');
-    };
-
-    socket.onmessage = function(event) {
-        if (event.data == "backup_abort_acknowledged") {
-            document.getElementById("abort-backup-wrapper").style.display = "none";
-            document.getElementById("backup-now-wrapper").style.display = "grid";
+    sendMessageToBcu(
+        "backup_abort",
+        function(answer) {
+            if (answer == "backup_abort_acknowledged") {
+                document.getElementById("abort-backup-wrapper").style.display = "none";
+                document.getElementById("backup-now-wrapper").style.display = "grid";
+            }
         }
-    };
+    );
 }

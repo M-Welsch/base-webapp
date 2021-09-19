@@ -1,15 +1,18 @@
 const BASE_ADDRESS = "ws://192.168.178.39:8453"
 
 
-function sendData(payload, callback) {
+function sendMessageToBcu(
+        payload,
+        callback = function(){},
+        error_callback = function(error){ console.log(error); alert('[close] Connection died'); }
+    ) {
     let socket = new WebSocket(BASE_ADDRESS);
     socket.onopen = function(e) {
         socket.send(payload);
     };
 
     socket.onerror = function(error) {
-        console.log(error);
-        alert('[close] Connection died');
+        error_callback(error)
     };
 
     socket.onmessage = function(event) {
@@ -36,24 +39,20 @@ function onDocumentLoad() {
 setInterval(heartbeat, 1000);
 
 function heartbeat() {
-    let socket = new WebSocket(BASE_ADDRESS);
-
-    socket.onopen = function(e) {
-        document.getElementById("not-connected").style.display = "none";
-        document.getElementById("shutdown-timer").style.display = "block";
-        socket.send("heartbeat?");
-    };
-
-    socket.onerror = function(error) {
-        document.getElementById("shutdown-timer").style.display = "none";
-        document.getElementById("not-connected").style.display = "block";
-    };
-
-    socket.onmessage = function(event) {
-        let current_status = JSON.parse(event.data)
-//        console.log(current_status);
-        distribute_data(current_status);
-    };
+    sendMessageToBcu(
+        "heartbeat?",
+        function(answer) {
+            document.getElementById("not-connected").style.display = "none";
+            document.getElementById("shutdown-timer").style.display = "block";
+            let current_status = JSON.parse(answer)
+    //        console.log(current_status);
+            distribute_data(current_status);
+        },
+        function(error) {
+            document.getElementById("shutdown-timer").style.display = "none";
+            document.getElementById("not-connected").style.display = "block";
+        }
+    );
 }
 
 function distribute_data( current_status ) {

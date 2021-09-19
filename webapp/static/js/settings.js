@@ -1,5 +1,5 @@
 function onPageLoad() {
-    sendData("request_config", onSettingsReceive);
+    sendMessageToBcu( "request_config", onSettingsReceive );
 }
 
 
@@ -68,7 +68,7 @@ function onSave() {
         }
     }
     console.log( settings );
-    sendData( "new config: "+JSON.stringify(settings), function(){} )
+    sendMessageToBcu( "new config: "+JSON.stringify(settings) )
 }
 
 
