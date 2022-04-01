@@ -1,4 +1,5 @@
-const BASE_ADDRESS = "ws://192.168.178.39:8453"
+//const BASE_ADDRESS = "ws://192.168.178.39:8453"
+const BASE_ADDRESS = "ws://127.0.0.1:8453"
 
 
 function sendMessageToBcu(

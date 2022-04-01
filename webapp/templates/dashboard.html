@@ -4,8 +4,8 @@
 {% block head %}
 <link rel="stylesheet"
       type="text/css"
-      href="{{ url_for('webapp.views.dashboard.static', filename='css/dashboard.css') }}">
-<script src="{{ url_for('webapp.views.dashboard.static', filename='js/dashboard.js') }}"></script>
+      href="{{ url_for('dashboard.static', filename='css/dashboard.css') }}">
+<script src="{{ url_for('dashboard.static', filename='js/dashboard.js') }}"></script>
 <title>BaSe - Dashboard</title>
 {% endblock %}
 
@@ -21,20 +21,20 @@
 <div id="center">
     <div id="icons-wrapper" class="center-wrapper">
         <div class="centered-column">
-            <img class="dashboard-icon" src="{{ url_for('webapp.views.dashboard.static', filename='image/schedule.svg') }}">
+            <img class="dashboard-icon" src="{{ url_for('dashboard.static', filename='image/schedule.svg') }}">
             <div id="next-backup-due-text">0:00:00</div>
         </div>
         <div>
-            <img class="dashboard-icon" id="dock-icon" src="{{ url_for('webapp.views.dashboard.static', filename='image/dock.svg') }}">
+            <img class="dashboard-icon" id="dock-icon" src="{{ url_for('dashboard.static', filename='image/dock.svg') }}">
         </div>
         <div>
-            <img class="dashboard-icon" id="power-icon" src="{{ url_for('webapp.views.dashboard.static', filename='image/power.svg') }}">
+            <img class="dashboard-icon" id="power-icon" src="{{ url_for('dashboard.static', filename='image/power.svg') }}">
         </div>
         <div>
-            <img class="dashboard-icon" id="mount-icon" src="{{ url_for('webapp.views.dashboard.static', filename='image/mount.svg') }}">
+            <img class="dashboard-icon" id="mount-icon" src="{{ url_for('dashboard.static', filename='image/mount.svg') }}">
         </div>
         <div>
-            <img class="dashboard-icon" id="backup-icon" src="{{ url_for('webapp.views.dashboard.static', filename='image/copy.svg') }}">
+            <img class="dashboard-icon" id="backup-icon" src="{{ url_for('dashboard.static', filename='image/copy.svg') }}">
         </div>
     </div>
     <div id="hdd-info-wrapper" class="center-wrapper">
