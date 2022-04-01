@@ -6,5 +6,5 @@ bp = Blueprint(Path(__file__).stem, __name__, template_folder="../templates", st
 
 
 @bp.route("/backups")
-def show():
+def show() -> str:
     return render_template("backup_viewer.html")
