@@ -1,6 +1,6 @@
 function onPageLoad() {
     sendMessageToBcu(
-        "backup_index",
+        '{"code": "backup_index"}',
         function(answer) {
             let backupIndex = JSON.parse(answer)
             updateBackupIndex(backupIndex);

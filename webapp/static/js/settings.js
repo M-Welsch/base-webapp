@@ -1,5 +1,6 @@
 function onPageLoad() {
-    sendMessageToBcu( "request_config", onSettingsReceive );
+    let message = {"code": "request_config"}
+    sendMessageToBcu( JSON.stringify(message), onSettingsReceive );
 }
 
 
@@ -16,7 +17,7 @@ function distributeConfigData(answer) {
     let time = config_data["schedule_backup"]["hour"]+":"+config_data["schedule_backup"]["minute"];
     document.getElementById("time-of-day").value = time;
 
-    document.getElementById("interval").value = config_data["schedule_backup"]["backup_frequency"];
+    document.getElementById("interval").value = config_data["schedule_backup"]["backup_interval"];
     document.getElementById("day-of-month").value = config_data["schedule_backup"]["day_of_month"];
     document.getElementById("day-of-week").value = config_data["schedule_backup"]["day_of_week"];
 
@@ -68,7 +69,7 @@ function onSave() {
         }
     }
     console.log( settings );
-    sendMessageToBcu( "new config: "+JSON.stringify(settings) )
+    sendMessageToBcu( '{"code": "new_config", "payload": '+JSON.stringify(settings)+'}' )
 }
 
 

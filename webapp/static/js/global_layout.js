@@ -41,7 +41,7 @@ setInterval(heartbeat, 1000);
 
 function heartbeat() {
     sendMessageToBcu(
-        "heartbeat?",
+        '{"code":"heartbeat","payload":""}',
         function(answer) {
             document.getElementById("not-connected").style.display = "none";
             document.getElementById("shutdown-timer").style.display = "block";

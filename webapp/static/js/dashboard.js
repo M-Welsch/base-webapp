@@ -62,7 +62,7 @@ function setDiscUsage(availability, percentage) {
 
 function backupNow() {
     sendMessageToBcu(
-        "backup_now",
+        JSON.stringify({"code":"backup_now"}),
         function(answer) {
             if (answer == "backup_request_acknowledged") {
                 document.getElementById("backup-now-wrapper").style.display = "none";
@@ -74,7 +74,7 @@ function backupNow() {
 
 function backupAbort() {
     sendMessageToBcu(
-        "backup_abort",
+        JSON.stringify({"code":"backup_abort"}),
         function(answer) {
             if (answer == "backup_abort_acknowledged") {
                 document.getElementById("abort-backup-wrapper").style.display = "none";
