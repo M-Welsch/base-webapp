@@ -40,8 +40,9 @@ function onDocumentLoad() {
 setInterval(heartbeat, 1000);
 
 function heartbeat() {
+    let message = {"code": "heartbeat"};
     sendMessageToBcu(
-        "heartbeat?",
+        JSON.stringify(message),
         function(answer) {
             document.getElementById("not-connected").style.display = "none";
             document.getElementById("shutdown-timer").style.display = "block";

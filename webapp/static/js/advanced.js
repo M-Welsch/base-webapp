@@ -1,7 +1,8 @@
 function onPageLoad() {}
 
 function buttonSignal(message_code) {
-    sendMessageToBcu(message_code);
+    let message = {"code": message_code};
+    sendMessageToBcu(JSON.stringify(message));
 }
 
 function displayAdvancedData( current_status ) {
@@ -30,11 +31,13 @@ function populateDiagnoseTable( data ) {
 function setBrightness() {
     let brightness = document.getElementById("slider-brightness").value;
     document.getElementById("brightness-value").innerHTML = brightness;
-    sendMessageToBcu( "display brightness: "+brightness );
+    let message = {"code": "display_brightness", "payload": brightness};
+    sendMessageToBcu(JSON.stringify(message));
 }
 
 function onDisplayTextSend() {
     let line1 = document.getElementById("display-line-1").value;
     let line2 = document.getElementById("display-line-2").value;
-    sendMessageToBcu( "display text: "+line1+line2 );
+    let message = {"code": "display_text", "payload" : {"line1": line1, "line2": line2}};
+    sendMessageToBcu(JSON.stringify(message));
 }

@@ -1,6 +1,7 @@
 function onPageLoad() {
+    let message = {"code": "logfile_index"};
     sendMessageToBcu(
-        "logfile_index",
+        JSON.stringify(message),
         function(answer) {
             let logfileIndex = JSON.parse(answer)
             updateLogfileIndex(logfileIndex);
@@ -12,9 +13,10 @@ function onPageLoad() {
 function onLogSelect() {
     let element = document.getElementById("log-select");
     let value = element.options[element.selectedIndex].value;
+    let message = {"code": "request_logfile", "payload": value};
 
     sendMessageToBcu(
-        "request_logfile: " + value,
+        JSON.stringify(message),
         function(answer) {
             let logfileLines = JSON.parse(answer)
             updateLogfileLines(logfileLines);
