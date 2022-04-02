@@ -69,7 +69,8 @@ function onSave() {
         }
     }
     console.log( settings );
-    sendMessageToBcu( '{"code": "new_config", "payload": '+JSON.stringify(settings)+'}' )
+    let message = {"code": "new_config", "payload": JSON.stringify(settings)};
+    sendMessageToBcu(JSON.stringify(message));
 }
 
 

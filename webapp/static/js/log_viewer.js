@@ -1,6 +1,7 @@
 function onPageLoad() {
+    let message = {"code": "logfile_index"};
     sendMessageToBcu(
-        '{"code": "logfile_index"}',
+        JSON.stringify(message),
         function(answer) {
             let logfileIndex = JSON.parse(answer)
             updateLogfileIndex(logfileIndex);
