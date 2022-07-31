@@ -11,6 +11,10 @@
 
 
 {% block content %}
+<script>
+    BASE_ADDRESS = "ws://{{base_address}}:8453";
+    console.log("received BaSe IP address: {{base_address}}");
+</script>
 
 <div id="warning-banner">
     <span id="banner-message"><span id="banner-warning-count">0</span> ungesehene Warnungen!</span>

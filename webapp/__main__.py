@@ -1,4 +1,4 @@
-from app import app
+from webapp.app import app
 
 if __name__ == "__main__":
     # https://stackoverflow.com/questions/9449101/how-to-stop-flask-from-initialising-twice-in-debug-mode
