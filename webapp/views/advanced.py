@@ -1,4 +1,5 @@
 from pathlib import Path
+
 from flask import Blueprint, render_template
 
 from webapp.util import get_ip
