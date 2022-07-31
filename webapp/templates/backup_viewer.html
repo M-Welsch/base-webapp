@@ -11,6 +11,10 @@
 
 
 {% block content %}
+<script>
+    BASE_ADDRESS = "ws://{{base_address}}:8453";
+    console.log("received BaSe IP address: {{base_address}}");
+</script>
 
 <h4>Backups</h4>
 <ul id="backup-index-list"></ul>
