@@ -1,6 +1,9 @@
-function onPageLoad() {
+import { mount_icon } from "./modules/dashboard_elements.js";
+
+export function onPageLoad() {
     document.getElementById("abort-backup-wrapper").style.display = "none";
 }
+
 
 function dismissWarningBanner() {
     let banners = document.getElementById("warning-banner");
@@ -11,7 +14,7 @@ function dismissWarningBanner() {
 //    setTimeout(function(){banners[0].style.display = "none";}, 500);
 }
 
-function displayDashboardData( current_status ) {
+export function displayDashboardData( current_status ) {
     setDiscUsage(current_status["diagnose"]["Backup-HDD verfügbar"], current_status["backup_hdd_usage"]);
     document.getElementById("log-view").innerHTML = current_status["log_tail"].join("\n");
     if (~~current_status["recent_warnings_count"] > 0) {
@@ -33,9 +36,9 @@ function displayDashboardData( current_status ) {
         document.getElementById("power-icon").style.opacity = "30%";
     }
     if (current_status["mounted"]) {
-        document.getElementById("mount-icon").style.opacity = "100%";
+        mount_icon.style.opacity = "100%";
     } else {
-        document.getElementById("mount-icon").style.opacity = "30%";
+        mount_icon.style.opacity = "30%";
     }
     if (current_status["backup_running"]) {
         document.getElementById("backup-icon").style.opacity = "100%";
