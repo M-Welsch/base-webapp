@@ -1,4 +1,4 @@
-import { mount_icon } from "./modules/dashboard_elements.js";
+import { backup_icon, dock_icon, mount_icon, power_icon } from "./modules/dashboard/icons.js";
 
 export function onPageLoad() {
     document.getElementById("abort-backup-wrapper").style.display = "none";
@@ -26,14 +26,14 @@ export function displayDashboardData( current_status ) {
     document.getElementById("next-backup-due-text").innerHTML = current_status["next_backup_due"];
 
     if (current_status["docked"]) {
-        document.getElementById("dock-icon").style.opacity = "100%";
+        dock_icon.style.opacity = "100%";
     } else {
-        document.getElementById("dock-icon").style.opacity = "30%";
+        dock_icon.style.opacity = "30%";
     }
     if (current_status["powered"]) {
-        document.getElementById("power-icon").style.opacity = "100%";
+        power_icon.style.opacity = "100%";
     } else {
-        document.getElementById("power-icon").style.opacity = "30%";
+        power_icon.style.opacity = "30%";
     }
     if (current_status["mounted"]) {
         mount_icon.style.opacity = "100%";
@@ -41,9 +41,9 @@ export function displayDashboardData( current_status ) {
         mount_icon.style.opacity = "30%";
     }
     if (current_status["backup_running"]) {
-        document.getElementById("backup-icon").style.opacity = "100%";
+        backup_icon.style.opacity = "100%";
     } else {
-        document.getElementById("backup-icon").style.opacity = "30%";
+        backup_icon.style.opacity = "30%";
     }
 }
 
