@@ -1,4 +1,4 @@
-import { backup_icon, dock_icon, mount_icon, power_icon } from "./modules/dashboard/icons.js";
+import { setStatus } from "./modules/dashboard/status.js";
 
 export function onPageLoad() {
     document.getElementById("abort-backup-wrapper").style.display = "none";
@@ -25,26 +25,7 @@ export function displayDashboardData( current_status ) {
     document.getElementById("banner-warning-count").innerHTML = current_status["recent_warnings_count"];
     document.getElementById("next-backup-due-text").innerHTML = current_status["next_backup_due"];
 
-    if (current_status["docked"]) {
-        dock_icon.style.opacity = "100%";
-    } else {
-        dock_icon.style.opacity = "30%";
-    }
-    if (current_status["powered"]) {
-        power_icon.style.opacity = "100%";
-    } else {
-        power_icon.style.opacity = "30%";
-    }
-    if (current_status["mounted"]) {
-        mount_icon.style.opacity = "100%";
-    } else {
-        mount_icon.style.opacity = "30%";
-    }
-    if (current_status["backup_running"]) {
-        backup_icon.style.opacity = "100%";
-    } else {
-        backup_icon.style.opacity = "30%";
-    }
+    setStatus(current_status);
 }
 
 function setDiscUsage(availability, percentage) {
