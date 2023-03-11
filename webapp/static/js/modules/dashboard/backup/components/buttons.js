@@ -1,7 +1,15 @@
 import { backupNow, backupAbort } from "../actions/backup.js";
 
-const backupNowButton = document.getElementById("backup-now");
-backupNowButton.addEventListener("click", backupNow);
+export function registerButtons() {
 
-const backupAbortButton = document.getElementById("backup-abort");
-backupAbort.addEventListener("click", backupAbort);
+    (function() {
+        const backupNowButton = document.getElementById("backup-now");
+        backupNowButton.addEventListener("click", backupNow);
+    })();
+
+    (function() {
+        const backupAbortButton = document.getElementById("backup-abort");
+        backupAbortButton.addEventListener("click", backupAbort);
+    })();
+
+}

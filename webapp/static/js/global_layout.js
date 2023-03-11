@@ -1,5 +1,5 @@
-import { displayDashboardData, onPageLoad } from "./dashboard.js";
-import { sendMessageToBcu } from "./modules/controller/JsonController.js";
+import { onPageLoad } from "./dashboard.js";
+import { BcuMessenger } from "./modules/message/BcuMessenger.js";
 
 
 function onDocumentLoad() {
@@ -17,38 +17,7 @@ function onDocumentLoad() {
 }
 
 
-setInterval(heartbeat, 1000);
-
-function heartbeat() {
-    let message = {"code": "heartbeat"};
-    sendMessageToBcu(
-        JSON.stringify(message),
-        function(answer) {
-            document.getElementById("not-connected").style.display = "none";
-            document.getElementById("shutdown-timer").style.display = "block";
-            let current_status = JSON.parse(answer)
-    //        console.log(current_status);
-            distribute_data(current_status);
-        },
-        function(error) {
-            document.getElementById("shutdown-timer").style.display = "none";
-            document.getElementById("not-connected").style.display = "block";
-        }
-    );
-}
-
-function distribute_data( current_status ) {
-    let page = window.location.pathname.slice( 1 );
-    switch ( page ) {
-        case "":
-            displayDashboardData( current_status );
-            break;
-        case "advanced":
-            displayAdvancedData( current_status );
-            break;
-    }
-}
-
+setInterval(BcuMessenger.send().heartbeat, 1000);
 
 function ready(callbackFunction) {
     if(document.readyState != 'loading') callbackFunction(event);

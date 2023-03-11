@@ -1,7 +1,9 @@
 import { setStatus } from "./modules/dashboard/status.js";
+import { registerButtons } from "./modules/dashboard/backup/components/buttons.js";
 
 export function onPageLoad() {
     document.getElementById("abort-backup-wrapper").style.display = "none";
+    registerButtons();
 }
 
 
