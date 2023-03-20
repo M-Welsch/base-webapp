@@ -4,12 +4,14 @@ export function registerButtons() {
 
     (function() {
         const backupNowButton = document.getElementById("backup-now");
-        backupNowButton.addEventListener("click", backupNow);
+        if (backupNowButton)
+            backupNowButton.addEventListener("click", backupNow);
     })();
 
     (function() {
         const backupAbortButton = document.getElementById("backup-abort");
-        backupAbortButton.addEventListener("click", backupAbort);
+        if (backupAbortButton)
+            backupAbortButton.addEventListener("click", backupNow);
     })();
 
 }
