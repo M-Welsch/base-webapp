@@ -1,17 +1,22 @@
 import { backupNow, backupAbort } from "../actions/backup.js";
 
+const idOnClickMapping = {
+    "backup-now": backupNow,
+    "backup-abort": backupAbort
+}
+
 export function registerButtons() {
 
     (function() {
-        const backupNowButton = document.getElementById("backup-now");
-        if (backupNowButton)
-            backupNowButton.addEventListener("click", backupNow);
+        for (const [id, onClick] of Object.entries(idOnClickMapping)) {
+            register(id, onClick);
+        }
     })();
 
-    (function() {
-        const backupAbortButton = document.getElementById("backup-abort");
-        if (backupAbortButton)
-            backupAbortButton.addEventListener("click", backupNow);
-    })();
+}
 
+function register(id, onClick) {
+    const someButton = document.getElementById(id);
+    if (someButton)
+        someButton.addEventListener("click", onClick);
 }
