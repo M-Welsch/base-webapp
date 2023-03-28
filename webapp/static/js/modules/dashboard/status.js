@@ -27,13 +27,13 @@ export function setStatus(current_status) {
 
 }
 
-function setStatusComplete(status_element) {
+export function setStatusComplete(status_element) {
 
     setStatusOpacity(status_element, status_complete_opacity);
 
 }
 
-function setStatusPartial(status_element) {
+export function setStatusPartial(status_element) {
 
     setStatusOpacity(status_element, status_partial_opacity);
 
