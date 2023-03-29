@@ -1,39 +1,41 @@
 import { backup_icon, dock_icon, mount_icon, power_icon } from "./icons.js";
 
-const status_complete_opacity = "100%";
-const status_partial_opacity = "30%";
-const status_types = {
-    "docked": dock_icon,
-    "powered": power_icon,
-    "mounted": mount_icon,
-    "backup_running": backup_icon
+export const docked_status = "docked";
+export const powered_status = "powered";
+export const mounted_status = "mounted";
+export const backup_running_status = "backup_running";
+
+export const status_types = {
+    [docked_status]: dock_icon,
+    [powered_status]: power_icon,
+    [mounted_status]: mount_icon,
+    [backup_running_status]: backup_icon
 }
 
-export function setStatus(current_status) {
+export const status_complete_opacity = "1";
+export const status_partial_opacity = "0.3";
 
-    for (const [status, status_element] of Object.entries(status_types)) {
+export function setStatus(current_status, status, status_element) {
 
-        if (current_status[status]) {
+    if (current_status[status]) {
 
-            setStatusComplete(status_element);
+        setStatusComplete(status_element);
 
-        } else {
+    } else {
 
-            setStatusPartial(status_element);
-
-        }
+        setStatusPartial(status_element);
 
     }
 
 }
 
-export function setStatusComplete(status_element) {
+function setStatusComplete(status_element) {
 
     setStatusOpacity(status_element, status_complete_opacity);
 
 }
 
-export function setStatusPartial(status_element) {
+function setStatusPartial(status_element) {
 
     setStatusOpacity(status_element, status_partial_opacity);
 

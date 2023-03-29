@@ -1,4 +1,4 @@
-import { setStatus } from "./modules/dashboard/status.js";
+import { setStatus, status_types } from "./modules/dashboard/status.js";
 import { registerButtons } from "./modules/dashboard/backup/components/buttons.js";
 
 export function onPageLoad() {
@@ -29,7 +29,9 @@ export function displayDashboardData( current_status ) {
     document.getElementById("banner-warning-count").innerHTML = current_status["recent_warnings_count"];
     document.getElementById("next-backup-due-text").innerHTML = current_status["next_backup_due"];
 
-    setStatus(current_status);
+    for (const [status, status_element] of Object.entries(status_types)) {
+        setStatus(current_status, status, status_element);
+    }
 }
 
 function setDiscUsage(availability, percentage) {
