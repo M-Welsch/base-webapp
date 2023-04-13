@@ -1,5 +1,3 @@
-import { setStatus, docked_status, mounted_status, status_complete_opacity, status_partial_opacity, powered_status, backup_running_status } from "../../../../../modules/dashboard/status.js";
-
 describe('Status', function () {
 
     let dock_icon = getIconMock();
