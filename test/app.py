@@ -11,7 +11,7 @@ js_source_path='CUSTOM_STATIC_PATH'
 app.config[js_source_path] = os.path.abspath(os.path.join(os.path.dirname(__file__), '../webapp/static'))
 
 # have a route listening for requests
-@app.route('/this/can/be/anything/<path:filename>')
+@app.route('/webapp/static/<path:filename>')
 def send_media(filename):
     path = os.path.join(app.config[js_source_path], filename)
     return send_file(path)
