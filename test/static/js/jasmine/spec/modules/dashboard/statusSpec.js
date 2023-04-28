@@ -1,4 +1,4 @@
-import { setStatus, docked_status, mounted_status, status_complete_opacity, status_partial_opacity, powered_status, backup_running_status } from "/webapp/static/js/modules/dashboard/status.js"
+import * as Status from "/webapp/static/js/modules/dashboard/status.js"
 
 describe('Status', function () {
 
@@ -11,8 +11,8 @@ describe('Status', function () {
     describe('Set docked status', function () {
 
         it('should show the dock_icon as complete', function () {
-            setStatus(current_status, docked_status, dock_icon);
-            expect(dock_icon.style.opacity).toEqual(status_complete_opacity);
+            Status.setStatus(current_status, Status.docked_status, dock_icon);
+            expect(dock_icon.style.opacity).toEqual(Status.status_complete_opacity);
         });
 
     });
@@ -20,8 +20,8 @@ describe('Status', function () {
     describe('Set mounted status', function () {
 
         it('should show the mount_icon as partial', function () {
-            setStatus(current_status, mounted_status, mount_icon);
-            expect(mount_icon.style.opacity).toEqual(status_partial_opacity);
+            Status.setStatus(current_status, Status.mounted_status, mount_icon);
+            expect(mount_icon.style.opacity).toEqual(Status.status_partial_opacity);
         });
 
     });
@@ -29,8 +29,8 @@ describe('Status', function () {
     describe('Set powered status', function () {
 
         it('should show the power_icon as partial', function () {
-            setStatus(current_status, mounted_status, power_icon);
-            expect(power_icon.style.opacity).toEqual(status_partial_opacity);
+            Status.setStatus(current_status, Status.mounted_status, power_icon);
+            expect(power_icon.style.opacity).toEqual(Status.status_partial_opacity);
         });
 
     });
@@ -38,8 +38,8 @@ describe('Status', function () {
     describe('Set backup running status', function () {
 
         it('should show the backup_running_icon as partial', function () {
-            setStatus(current_status, mounted_status, backup_running_icon);
-            expect(backup_running_icon.style.opacity).toEqual(status_partial_opacity);
+            Status.setStatus(current_status, Status.mounted_status, backup_running_icon);
+            expect(backup_running_icon.style.opacity).toEqual(Status.status_partial_opacity);
         });
 
     });
@@ -47,10 +47,10 @@ describe('Status', function () {
 
 function getCurrentStatusMock() {
     return {
-        [docked_status]: true,
-        [mounted_status]: false,
-        [powered_status]: false,
-        [backup_running_status]: false
+        [Status.docked_status]: true,
+        [Status.mounted_status]: false,
+        [Status.powered_status]: false,
+        [Status.backup_running_status]: false
     };
 }
 
