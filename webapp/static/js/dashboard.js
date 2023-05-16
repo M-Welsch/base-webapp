@@ -6,8 +6,10 @@ export function onPageLoad() {
     if (abortBackupWrapper)
         abortBackupWrapper.style.display = "none";
     registerButtons();
+    var bannerDismiss = document.getElementById("banner-dismiss");
+    if (bannerDismiss)
+        bannerDismiss.addEventListener("click", dismissWarningBanner)
 }
-
 
 function dismissWarningBanner() {
     let banners = document.getElementById("warning-banner");
