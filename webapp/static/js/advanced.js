@@ -1,4 +1,24 @@
+import { sendMessageToBcu } from "./modules/message/json/JsonMessenger.js";
+
 function onPageLoad() {}
+
+(function setupIIFE() {
+    var buttonSignalMapping = {
+        "button-dock": "dock",
+        "button-undock": "undock",
+        "button-power": "power",
+        "button-unpower": "unpower",
+        "button-mount": "mount",
+        "button-unmount": "unmount",
+        "button-shutdown": "shutdown"
+    }
+    
+    for (const [id, onClick] of Object.entries(buttonSignalMapping)) {
+        document.getElementById(id).addEventListener("click", buttonSignal(onClick));
+    }
+
+    document.getElementById("slider-brightness").addEventListener("change", setBrightness);
+})();
 
 function buttonSignal(message_code) {
     let message = {"code": message_code};

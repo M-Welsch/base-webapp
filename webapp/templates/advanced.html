@@ -5,7 +5,7 @@
 <link rel="stylesheet"
       type="text/css"
       href="{{ url_for('advanced.static', filename='css/advanced.css') }}">
-<script src="{{ url_for('advanced.static', filename='js/advanced.js') }}"></script>
+<script src="{{ url_for('advanced.static', filename='js/advanced.js') }}" type="module"></script>
 <title>BaSe - Erweiterte Einstellungen</title>
 {% endblock %}
 
@@ -24,13 +24,13 @@
     <div id="adv-control" class="adv-column">
         <h4 id="heading-control">Steuerung</h4>
         <div id="control-container">
-            <button id="button-dock" class="control-button" onclick="buttonSignal('dock')">Dock</button>
-            <button id="button-undock" class="control-button" onclick="buttonSignal('undock')">Undock</button>
-            <button id="button-power" class="control-button" onclick="buttonSignal('power')">Power</button>
-            <button id="button-unpower" class="control-button" onclick="buttonSignal('unpower')">Unpower</button>
-            <button id="button-mount" class="control-button" onclick="buttonSignal('mount')">Mount</button>
-            <button id="button-unmount" class="control-button" onclick="buttonSignal('unmount')">Unmount</button>
-            <button id="button-shutdown" class="control-button" onclick="buttonSignal('shutdown')">Shutdown</button>
+            <button id="button-dock" class="control-button">Dock</button>
+            <button id="button-undock" class="control-button">Undock</button>
+            <button id="button-power" class="control-button">Power</button>
+            <button id="button-unpower" class="control-button">Unpower</button>
+            <button id="button-mount" class="control-button">Mount</button>
+            <button id="button-unmount" class="control-button">Unmount</button>
+            <button id="button-shutdown" class="control-button">Shutdown</button>
         </div>
         <div id="display-text-container">
             <p>Display-Text ändern:</p>
@@ -58,7 +58,7 @@
         <div>
             Bildschirmhelligkeit: <span id="brightness-value"></span> %
         </div>
-        <input type="range" min="0" max="100" id="slider-brightness" onchange="setBrightness()">
+        <input type="range" min="0" max="100" id="slider-brightness">
     </div>
 </div>
 
