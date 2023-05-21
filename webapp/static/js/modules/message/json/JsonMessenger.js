@@ -21,27 +21,22 @@ export function sendMessageToBcu(
     };
 }
 
-export function backupNow() {
+export function backupNow(onBackup) {
     let message = {"code": "backup_now"};
-    sendMessageToBcu(
-        JSON.stringify(message),
-        function(answer) {
-            if (answer == "backup_request_acknowledged") {
-                document.getElementById("backup-now-wrapper").style.display = "none";
-                document.getElementById("abort-backup-wrapper").style.display = "grid";
-            }
-        }
-    );
+    sendMessage(message, "backup_request_acknowledged", onBackup);
 }
 
-export function backupAbort() {
+export function backupAbort(onAbort) {
     let message = {"code": "backup_abort"};
+    sendMessage(message, "backup_abort_acknowledged", onAbort);
+}
+
+function sendMessage(message, answerCode, onMessage) {
     sendMessageToBcu(
         JSON.stringify(message),
         function(answer) {
-            if (answer == "backup_abort_acknowledged") {
-                document.getElementById("abort-backup-wrapper").style.display = "none";
-                document.getElementById("backup-now-wrapper").style.display = "grid";
+            if (answerCode == answer) {
+                onMessage();
             }
         }
     );
@@ -55,7 +50,6 @@ export function heartbeat() {
             document.getElementById("not-connected").style.display = "none";
             document.getElementById("shutdown-timer").style.display = "block";
             let current_status = JSON.parse(answer)
-    //        console.log(current_status);
             distribute_data(current_status);
         },
         function(error) {

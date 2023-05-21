@@ -2,22 +2,7 @@ import { setStatus, status_types } from "./modules/dashboard/status.js";
 import { registerButtons } from "./modules/dashboard/backup/components/buttons.js";
 
 export function onPageLoad() {
-    var abortBackupWrapper = document.getElementById("abort-backup-wrapper");
-    if (abortBackupWrapper)
-        abortBackupWrapper.style.display = "none";
     registerButtons();
-    var bannerDismiss = document.getElementById("banner-dismiss");
-    if (bannerDismiss)
-        bannerDismiss.addEventListener("click", dismissWarningBanner)
-}
-
-function dismissWarningBanner() {
-    let banners = document.getElementById("warning-banner");
-    banners.style.opacity = "0";
-    banners.style.height = "0px";
-    banners.style.padding = "0px";
-//    setTimeout(function(){banners[0].remove();}, 500);
-//    setTimeout(function(){banners[0].style.display = "none";}, 500);
 }
 
 export function displayDashboardData( current_status ) {

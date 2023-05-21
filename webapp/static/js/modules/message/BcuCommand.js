@@ -4,14 +4,14 @@ export function BcuCommand() {
 
 }
 
-BcuCommand.prototype.backupNow = function() {
+BcuCommand.prototype.backupNow = function(onBackup) {
     console.log("backup");
-    backupNow();
+    backupNow(onBackup);
 }
 
-BcuCommand.prototype.backupAbort = function() {
+BcuCommand.prototype.backupAbort = function(onAbort) {
     console.log("backup abort");
-    backupAbort();
+    backupAbort(onAbort);
 }
 
 BcuCommand.prototype.heartbeat = function() {
