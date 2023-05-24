@@ -18,6 +18,8 @@ function onPageLoad() {}
     }
 
     document.getElementById("slider-brightness").addEventListener("change", setBrightness);
+
+    document.getElementById("display-text-send").addEventListener("click", onDisplayTextSend);
 })();
 
 function buttonSignal(message_code) {
