@@ -14,8 +14,8 @@ BcuCommand.prototype.backupAbort = function(onAbort) {
     backupAbort(onAbort);
 }
 
-BcuCommand.prototype.heartbeat = function() {
-    heartbeat();
+BcuCommand.prototype.heartbeat = function(onAnswer, onError) {
+    heartbeat(onAnswer, onError);
 }
 
 export {backupAbort, backupNow, heartbeat}

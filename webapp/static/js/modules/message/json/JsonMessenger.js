@@ -1,4 +1,3 @@
-import { displayDashboardData } from "../../../dashboard.js";
 //const BASE_ADDRESS = "ws://192.168.178.39:8453"
 var BASE_ADDRESS = "ws://127.0.0.1:8453"
 
@@ -42,31 +41,11 @@ function sendMessage(message, answerCode, onMessage) {
     );
 }
 
-export function heartbeat() {
+export function heartbeat(onAnswer, onError) {
     let message = {"code": "heartbeat"};
     sendMessageToBcu(
         JSON.stringify(message),
-        function(answer) {
-            document.getElementById("not-connected").style.display = "none";
-            document.getElementById("shutdown-timer").style.display = "block";
-            let current_status = JSON.parse(answer)
-            distribute_data(current_status);
-        },
-        function(error) {
-            document.getElementById("shutdown-timer").style.display = "none";
-            document.getElementById("not-connected").style.display = "block";
-        }
+        onAnswer,
+        onError
     );
-}
-
-function distribute_data( current_status ) {
-    let page = window.location.pathname.slice( 1 );
-    switch ( page ) {
-        case "":
-            displayDashboardData( current_status );
-            break;
-        case "advanced":
-            displayAdvancedData( current_status );
-            break;
-    }
 }

@@ -25,7 +25,7 @@ function buttonSignal(message_code) {
     sendMessageToBcu(JSON.stringify(message));
 }
 
-function displayAdvancedData( current_status ) {
+export function displayAdvancedData( current_status ) {
     document.getElementById("button-dock").disabled = current_status["docked"];
     document.getElementById("button-undock").disabled = !current_status["docked"];
     populateDiagnoseTable( current_status["diagnose"] );
