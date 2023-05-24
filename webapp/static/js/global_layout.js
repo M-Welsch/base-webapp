@@ -1,6 +1,7 @@
 import { onPageLoad } from "./dashboard.js";
 import { BcuMessenger } from "./modules/message/BcuMessenger.js";
 import { displayDashboardData } from "./dashboard.js";
+import { displayAdvancedData } from "./advanced.js";
 
 function onDocumentLoad() {
     let page = window.location.pathname.slice(1);
