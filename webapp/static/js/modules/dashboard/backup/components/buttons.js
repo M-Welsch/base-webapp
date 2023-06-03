@@ -1,4 +1,4 @@
-import { backupNow, backupAbort } from "../actions/backup.js";
+import { backupNow, backupAbort } from "/static/js/modules/dashboard/backup/actions/backup.js";
 
 export function registerButtons() {
 

@@ -1,7 +1,25 @@
-function onPageLoad() {
+import { sendMessageToBcu } from "./modules/message/json/JsonMessenger.js";
+
+(function onPageLoad() {
     let message = {"code": "request_config"}
     sendMessageToBcu( JSON.stringify(message), onSettingsReceive );
-}
+
+    const intervalElement = document.getElementById("interval");
+    if (intervalElement)
+        intervalElement.addEventListener("change", onIntervalChange);
+
+    const sshElement = document.getElementById("ssh");
+    if (sshElement)
+        sshElement.addEventListener("change", onProtocolChange);
+
+    const smbElement = document.getElementById("smb");
+    if (smbElement)
+        smbElement.addEventListener("change", onProtocolChange);
+
+    const saveConfigElement = document.getElementById("save-config");
+    if (saveConfigElement)
+        saveConfigElement.addEventListener("click", onSave);
+})()
 
 
 function onSettingsReceive(settings) {

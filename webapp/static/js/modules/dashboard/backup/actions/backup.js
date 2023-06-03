@@ -1,4 +1,4 @@
-import { BcuMessenger } from "../../../message/BcuMessenger.js";
+import { BcuMessenger } from "/static/js/modules/message/BcuMessenger.js";
 
 export function backupNow(onBackup) {
     console.log("init backup");

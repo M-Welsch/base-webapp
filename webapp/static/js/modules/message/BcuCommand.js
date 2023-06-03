@@ -5,12 +5,10 @@ export function BcuCommand() {
 }
 
 BcuCommand.prototype.backupNow = function(onBackup) {
-    console.log("backup");
     backupNow(onBackup);
 }
 
 BcuCommand.prototype.backupAbort = function(onAbort) {
-    console.log("backup abort");
     backupAbort(onAbort);
 }
 

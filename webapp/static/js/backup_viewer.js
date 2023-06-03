@@ -1,4 +1,6 @@
-function onPageLoad() {
+import { sendMessageToBcu } from "./modules/message/json/JsonMessenger.js";
+
+(function onPageLoad() {
     let message = {"code": "backup_index"};
     sendMessageToBcu(
         JSON.stringify(message),
@@ -7,7 +9,7 @@ function onPageLoad() {
             updateBackupIndex(backupIndex);
         }
     );
-}
+})()
 
 function updateBackupIndex(backupIndex) {
     let table = document.getElementById("backup-index-list");

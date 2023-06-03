@@ -5,7 +5,7 @@
 <link rel="stylesheet"
       type="text/css"
       href="{{ url_for('settings.static', filename='css/settings.css') }}">
-<script src="{{ url_for('settings.static', filename='js/settings.js') }}"></script>
+<script src="{{ url_for('settings.static', filename='js/settings.js') }}" type="module"></script>
 <title>BaSe - Konfiguration</title>
 {% endblock %}
 
@@ -22,7 +22,7 @@
         <ul>
             <li>
                 Intervall:
-                <select id="interval" onchange="onIntervalChange()">
+                <select id="interval">
                     <option value="months">monatlich</option>
                     <option value="weeks">wöchentlich</option>
                     <option value="days">täglich</option>
@@ -51,11 +51,11 @@
         <h4>Protokoll</h4>
         <ul>
             <li>
-                <input type="radio" name="protocol" value="ssh" id="ssh" onchange="onProtocolChange()">
+                <input type="radio" name="protocol" value="ssh" id="ssh">
                 <label for="ssh">SSH (sicherer)</label>
             </li>
             <li>
-                <input type="radio" name="protocol" value="smb" id="smb" onchange="onProtocolChange()">
+                <input type="radio" name="protocol" value="smb" id="smb">
                 <label for="smb">Samba (schneller)</label>
             </li>
         </ul>
@@ -98,7 +98,7 @@
     </ul>
 </div>
 <div>
-    <button id="save-config" onclick="onSave()">speichern</button>
+    <button id="save-config">speichern</button>
 </div>
 
 {% endblock %}

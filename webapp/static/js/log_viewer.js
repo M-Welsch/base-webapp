@@ -1,4 +1,6 @@
-function onPageLoad() {
+import { sendMessageToBcu } from "./modules/message/json/JsonMessenger.js";
+
+(function onPageLoad() {
     let message = {"code": "logfile_index"};
     sendMessageToBcu(
         JSON.stringify(message),
@@ -8,7 +10,10 @@ function onPageLoad() {
             onLogSelect();
         }
     );
-}
+    const logSelectElement = document.getElementById("log-select");
+    if (logSelectElement)
+        logSelectElement.addEventListener("change", onLogSelect);
+})()
 
 function onLogSelect() {
     let element = document.getElementById("log-select");

@@ -14,12 +14,20 @@ function onPageLoad() {}
     }
     
     for (const [id, onClick] of Object.entries(buttonSignalMapping)) {
-        document.getElementById(id).addEventListener("click", buttonSignal(onClick));
+        var button = document.getElementById(id);
+        if (button)
+            button.addEventListener("click", buttonSignal(onClick));
     }
 
-    document.getElementById("slider-brightness").addEventListener("change", setBrightness);
+    var brightnessSlider = document.getElementById("slider-brightness");
+    
+    if (brightnessSlider)
+        brightnessSlider.addEventListener("change", setBrightness);
 
-    document.getElementById("display-text-send").addEventListener("click", onDisplayTextSend);
+    var displayTexSendtElement = document.getElementById("display-text-send");
+    
+    if (displayTexSendtElement)
+        displayTexSendtElement.addEventListener("click", onDisplayTextSend);
 })();
 
 function buttonSignal(message_code) {

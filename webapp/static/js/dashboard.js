@@ -1,9 +1,9 @@
 import { setStatus, status_types } from "./modules/dashboard/status.js";
 import { registerButtons } from "./modules/dashboard/backup/components/buttons.js";
 
-export function onPageLoad() {
+(function onPageLoad() {
     registerButtons();
-}
+})()
 
 export function displayDashboardData( current_status ) {
     setDiscUsage(current_status["diagnose"]["Backup-HDD verfügbar"], current_status["backup_hdd_usage"]);

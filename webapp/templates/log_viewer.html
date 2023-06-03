@@ -5,7 +5,7 @@
 <link rel="stylesheet"
       type="text/css"
       href="{{ url_for('log_viewer.static', filename='css/log_viewer.css') }}">
-<script src="{{ url_for('log_viewer.static', filename='js/log_viewer.js') }}"></script>
+<script src="{{ url_for('log_viewer.static', filename='js/log_viewer.js') }}" type="module"></script>
 <title>BaSe - Backup-Viewer</title>
 {% endblock %}
 
@@ -17,7 +17,7 @@
 </script>
 
 <div id="log-selection">
-    <select name="log-select" id="log-select" onchange="onLogSelect(this)"></select>
+    <select name="log-select" id="log-select"></select>
 </div>
 
 <textarea id="log-view-detailed" readonly></textarea>

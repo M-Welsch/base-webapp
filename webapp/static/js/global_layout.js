@@ -1,4 +1,3 @@
-import { onPageLoad } from "./dashboard.js";
 import { BcuMessenger } from "./modules/message/BcuMessenger.js";
 import { displayDashboardData } from "./dashboard.js";
 import { displayAdvancedData } from "./advanced.js";
@@ -14,7 +13,6 @@ function onDocumentLoad() {
     if ( !page ) { page = "dashboard" }
     document.getElementById("link-"+page).classList.add("active-nav-link");
 
-    onPageLoad();
 }
 
 function onHeartbeatAnswer (answer) {
