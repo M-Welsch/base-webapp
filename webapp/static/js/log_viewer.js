@@ -38,10 +38,10 @@ function updateLogfileIndex(logfileIndex) {
 }
 
 function updateLogfileLines(logfileLines) {
+    console.log(logfileLines)
     let textarea = document.getElementById("log-view-detailed");
-    textarea.innerHTML = "";
-    for (let i = 0; i < logfileLines.length; i++) {
-        textarea.innerHTML += logfileLines[i];
-    }
+    textarea.textContent = "";
+    const logfileContent = logfileLines.join("");
+    textarea.textContent = logfileContent;
     textarea.setAttribute("rows", logfileLines.length)
 }
