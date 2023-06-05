@@ -30,11 +30,29 @@ function onLogSelect() {
 }
 
 function updateLogfileIndex(logfileIndex) {
+
     let select = document.getElementById("log-select");
+
     select.innerHTML = "";
-    for (let i = 0; i < logfileIndex.length; i++) {
-        select.innerHTML += "<option value="+logfileIndex[i]+">"+logfileIndex[i]+"</option>";
+
+    logfileIndex.map(getLogfileSelectOption).forEach(addOptionToSelect);
+
+    function getLogfileSelectOption(optionValue) {
+
+        var optionElement = document.createElement("option");
+        optionElement.value = optionValue;
+        optionElement.textContent = optionValue;
+
+        return optionElement;
+
     }
+
+    function addOptionToSelect(option) {
+        
+        select.add(option);
+
+    }
+
 }
 
 function updateLogfileLines(logfileLines) {
