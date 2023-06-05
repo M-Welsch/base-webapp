@@ -57,3 +57,12 @@ export function logfileIndex(onAnswer) {
         onAnswer
     );
 }
+
+export function requestLogfile(selectedLogfile, onAnswer) {
+    let message = {"code": "request_logfile", "payload": selectedLogfile};
+
+    sendMessageToBcu(
+        JSON.stringify(message),
+        onAnswer
+    );
+}

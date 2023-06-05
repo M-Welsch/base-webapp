@@ -19,3 +19,11 @@ BcuCommand.prototype.heartbeat = function(onAnswer, onError) {
 BcuCommand.prototype.logfileIndex = function(onAnswer) {
     Messenger.logfileIndex(onAnswer);
 }
+
+BcuCommand.prototype.logfileIndex = function(onAnswer) {
+    Messenger.logfileIndex(onAnswer);
+}
+
+BcuCommand.prototype.requestLogfile = function(selectedLogFile, onAnswer) {
+    Messenger.requestLogfile(selectedLogFile, onAnswer);
+}
