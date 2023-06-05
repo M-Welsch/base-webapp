@@ -1,4 +1,4 @@
-import { backupNow, backupAbort } from "/static/js/modules/dashboard/backup/actions/backup.js";
+import { BcuMessenger } from "/static/js/modules/message/BcuMessenger.js";
 
 export function registerButtons() {
 
@@ -32,7 +32,7 @@ function setupBackupAbortButton(backupAbortButton, abortBackupWrapper, backupWra
     if (backupAbortButton) {
 
         backupAbortButton.addEventListener("click", function onBackupAbortClick() {
-            backupAbort(function onAbort() {
+            BcuMessenger.send().backupAbort(function onAbort() {
                 abortBackupWrapper.style.display = "none";
                 backupWrapper.style.display = "grid";
             });
@@ -45,7 +45,7 @@ function setupBackupButton(backupNowButton, backupWrapper, abortBackupWrapper) {
     if (backupNowButton) {
 
         backupNowButton.addEventListener("click", function onBackupNowClick() {
-            backupNow(function onBackup() {
+            BcuMessenger.send().backupNow(function onBackup() {
                 backupWrapper.style.display = "none";
                 abortBackupWrapper.style.display = "grid";
             });
