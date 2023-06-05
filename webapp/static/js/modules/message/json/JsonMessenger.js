@@ -49,3 +49,11 @@ export function heartbeat(onAnswer, onError) {
         onError
     );
 }
+
+export function logfileIndex(onAnswer) {
+    let message = {"code": "logfile_index"};
+    sendMessageToBcu(
+        JSON.stringify(message),
+        onAnswer
+    );
+}

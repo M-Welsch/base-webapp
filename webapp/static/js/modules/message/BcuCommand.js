@@ -1,19 +1,21 @@
-import { backupAbort, backupNow, heartbeat } from "./json/JsonMessenger.js";
+import * as Messenger from "./json/JsonMessenger.js";
 
 export function BcuCommand() {
 
 }
 
 BcuCommand.prototype.backupNow = function(onBackup) {
-    backupNow(onBackup);
+    Messenger.backupNow(onBackup);
 }
 
 BcuCommand.prototype.backupAbort = function(onAbort) {
-    backupAbort(onAbort);
+    Messenger.backupAbort(onAbort);
 }
 
 BcuCommand.prototype.heartbeat = function(onAnswer, onError) {
-    heartbeat(onAnswer, onError);
+    Messenger.heartbeat(onAnswer, onError);
 }
 
-export {backupAbort, backupNow, heartbeat}
+BcuCommand.prototype.logfileIndex = function(onAnswer) {
+    Messenger.logfileIndex(onAnswer);
+}

@@ -1,15 +1,14 @@
 import { sendMessageToBcu } from "./modules/message/json/JsonMessenger.js";
+import { BcuMessenger } from "./modules/message/BcuMessenger.js";
 
 (function onPageLoad() {
-    let message = {"code": "logfile_index"};
-    sendMessageToBcu(
-        JSON.stringify(message),
-        function(answer) {
-            let logfileIndex = JSON.parse(answer)
-            updateLogfileIndex(logfileIndex);
-            onLogSelect();
-        }
-    );
+    
+    BcuMessenger.send().logfileIndex(function onLogfileIndexReceive(answer) {
+        let logfileIndex = JSON.parse(answer)
+        updateLogfileIndex(logfileIndex);
+        onLogSelect();
+    });
+
     const logSelectElement = document.getElementById("log-select");
     if (logSelectElement)
         logSelectElement.addEventListener("change", onLogSelect);
