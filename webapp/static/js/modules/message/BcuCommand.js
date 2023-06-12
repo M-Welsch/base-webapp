@@ -31,3 +31,15 @@ BcuCommand.prototype.requestLogfile = function(selectedLogFile, onAnswer) {
 BcuCommand.prototype.backupIndex = function(onAnswer) {
     Messenger.backupIndex(onAnswer);
 }
+
+BcuCommand.prototype.buttonSignal = function(messageCode) {
+    Messenger.buttonSignal(messageCode);
+}
+
+BcuCommand.prototype.setBrightness = function(brightness) {
+    Messenger.setBrightness(brightness);
+}
+
+BcuCommand.prototype.sendDisplayText = function(firstLine, secondLine) {
+    Messenger.sendDisplayText(firstLine, secondLine);
+}

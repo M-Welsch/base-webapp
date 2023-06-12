@@ -1,4 +1,4 @@
-import { sendMessageToBcu } from "./modules/message/json/JsonMessenger.js";
+import { BcuMessenger } from "./modules/message/BcuMessenger.js";
 
 function onPageLoad() {}
 
@@ -21,8 +21,9 @@ function onPageLoad() {}
 
     var brightnessSlider = document.getElementById("slider-brightness");
     
-    if (brightnessSlider)
+    if (brightnessSlider) {
         brightnessSlider.addEventListener("change", setBrightness);
+    }
 
     var displayTexSendtElement = document.getElementById("display-text-send");
     
@@ -31,8 +32,7 @@ function onPageLoad() {}
 })();
 
 function buttonSignal(message_code) {
-    let message = {"code": message_code};
-    sendMessageToBcu(JSON.stringify(message));
+    BcuMessenger.send().buttonSignal(message_code);
 }
 
 export function displayAdvancedData( current_status ) {
@@ -60,14 +60,12 @@ function populateDiagnoseTable( data ) {
 
 function setBrightness() {
     let brightness = document.getElementById("slider-brightness").value;
-    document.getElementById("brightness-value").innerHTML = brightness;
-    let message = {"code": "display_brightness", "payload": brightness};
-    sendMessageToBcu(JSON.stringify(message));
+    document.getElementById("brightness-value").textContent = brightness;
+    BcuMessenger.send().setBrightness(brightness);
 }
 
 function onDisplayTextSend() {
     let line1 = document.getElementById("display-line-1").value;
     let line2 = document.getElementById("display-line-2").value;
-    let message = {"code": "display_text", "payload" : {"line1": line1, "line2": line2}};
-    sendMessageToBcu(JSON.stringify(message));
+    BcuMessenger.send().sendDisplayText(line1, line2)
 }

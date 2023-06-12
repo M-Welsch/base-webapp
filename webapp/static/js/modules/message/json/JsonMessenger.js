@@ -74,3 +74,20 @@ export function backupIndex(onAnswer) {
         onAnswer
     );
 }
+
+export function buttonSignal(messageCode) {
+    let message = {"code": messageCode};
+    sendMessageToBcu(
+        JSON.stringify(message)
+    );
+}
+
+export function setBrightness(brightness) {
+    let message = {"code": "display_brightness", "payload": brightness};
+    sendMessageToBcu(JSON.stringify(message));
+}
+
+export function sendDisplayText(firstLine, secondLine) {
+    let message = {"code": "display_text", "payload" : {"line1": firstLine, "line2": secondLine}};
+    sendMessageToBcu(JSON.stringify(message));
+}
