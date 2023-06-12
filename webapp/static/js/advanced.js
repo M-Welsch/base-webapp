@@ -22,6 +22,7 @@ function onPageLoad() {}
     var brightnessSlider = document.getElementById("slider-brightness");
     
     if (brightnessSlider) {
+        setBrightness();
         brightnessSlider.addEventListener("change", setBrightness);
     }
 
