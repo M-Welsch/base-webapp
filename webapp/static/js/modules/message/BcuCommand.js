@@ -27,3 +27,7 @@ BcuCommand.prototype.logfileIndex = function(onAnswer) {
 BcuCommand.prototype.requestLogfile = function(selectedLogFile, onAnswer) {
     Messenger.requestLogfile(selectedLogFile, onAnswer);
 }
+
+BcuCommand.prototype.backupIndex = function(onAnswer) {
+    Messenger.backupIndex(onAnswer);
+}

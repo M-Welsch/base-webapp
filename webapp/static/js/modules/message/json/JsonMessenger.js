@@ -66,3 +66,11 @@ export function requestLogfile(selectedLogfile, onAnswer) {
         onAnswer
     );
 }
+
+export function backupIndex(onAnswer) {
+    let message = {"code": "backup_index"};
+    sendMessageToBcu(
+        JSON.stringify(message),
+        onAnswer
+    );
+}

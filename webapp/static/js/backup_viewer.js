@@ -1,19 +1,17 @@
-import { sendMessageToBcu } from "./modules/message/json/JsonMessenger.js";
+import { BcuMessenger } from "./modules/message/BcuMessenger.js";
 
 (function onPageLoad() {
-    let message = {"code": "backup_index"};
-    sendMessageToBcu(
-        JSON.stringify(message),
-        function(answer) {
-            let backupIndex = JSON.parse(answer)
-            updateBackupIndex(backupIndex);
-        }
-    );
-})()
+    BcuMessenger.send().backupIndex(function onBackupIndexReceive(answer) {
+        let backupIndex = JSON.parse(answer)
+        updateBackupIndex(backupIndex);
+    });
+})();
 
 function updateBackupIndex(backupIndex) {
+
     let table = document.getElementById("backup-index-list");
     table.innerHTML = "";
+
     for (let i = 0; i < backupIndex.length; i++) {
 
         let listElement = document.createElement("li");
@@ -21,4 +19,5 @@ function updateBackupIndex(backupIndex) {
         table.appendChild(listElement);
 
     }
+
 }
