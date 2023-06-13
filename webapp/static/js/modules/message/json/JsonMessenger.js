@@ -30,17 +30,6 @@ export function backupAbort(onAbort) {
     sendMessage(message, "backup_abort_acknowledged", onAbort);
 }
 
-function sendMessage(message, answerCode, onMessage) {
-    sendMessageToBcu(
-        JSON.stringify(message),
-        function(answer) {
-            if (answerCode == answer) {
-                onMessage();
-            }
-        }
-    );
-}
-
 export function heartbeat(onAnswer, onError) {
     let message = {"code": "heartbeat"};
     sendMessageToBcu(
@@ -90,4 +79,25 @@ export function setBrightness(brightness) {
 export function sendDisplayText(firstLine, secondLine) {
     let message = {"code": "display_text", "payload" : {"line1": firstLine, "line2": secondLine}};
     sendMessageToBcu(JSON.stringify(message));
+}
+
+export function requestConfig(onAnswer) {
+    let message = {"code": "request_config"};
+    sendMessageToBcu(JSON.stringify(message), onAnswer);
+}
+
+export function newConfig(settings) {
+    let message = {"code": "new_config", "payload": JSON.stringify(settings)};
+    sendMessageToBcu(JSON.stringify(message));
+}
+
+function sendMessage(message, answerCode, onMessage) {
+    sendMessageToBcu(
+        JSON.stringify(message),
+        function(answer) {
+            if (answerCode == answer) {
+                onMessage();
+            }
+        }
+    );
 }

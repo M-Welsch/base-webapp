@@ -1,8 +1,7 @@
-import { sendMessageToBcu } from "./modules/message/json/JsonMessenger.js";
+import { BcuMessenger } from "./modules/message/BcuMessenger.js";
 
 (function onPageLoad() {
-    let message = {"code": "request_config"}
-    sendMessageToBcu( JSON.stringify(message), onSettingsReceive );
+    BcuMessenger.send().requestConfig(onSettingsReceive);
 
     const intervalElement = document.getElementById("interval");
     if (intervalElement)
@@ -55,7 +54,6 @@ function distributeConfigData(answer) {
     document.getElementById(config_data["sync"]["protocol"]).checked = true;
 }
 
-
 function onSave() {
     let [hour, minute] = document.getElementById("time-of-day").value.split(":");
     let settings = {
@@ -87,8 +85,7 @@ function onSave() {
         }
     }
     console.log( settings );
-    let message = {"code": "new_config", "payload": JSON.stringify(settings)};
-    sendMessageToBcu(JSON.stringify(message));
+    BcuMessenger.send().newConfig(settings);
 }
 
 

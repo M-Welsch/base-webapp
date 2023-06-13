@@ -43,3 +43,11 @@ BcuCommand.prototype.setBrightness = function(brightness) {
 BcuCommand.prototype.sendDisplayText = function(firstLine, secondLine) {
     Messenger.sendDisplayText(firstLine, secondLine);
 }
+
+BcuCommand.prototype.requestConfig = function(onAnswer) {
+    Messenger.requestConfig(onAnswer);
+}
+
+BcuCommand.prototype.newConfig = function(settings) {
+    Messenger.newConfig(settings);
+}
