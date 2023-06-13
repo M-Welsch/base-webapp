@@ -21,17 +21,17 @@ export function sendMessageToBcu(
 }
 
 export function backupNow(onBackup) {
-    let message = {"code": "backup_now"};
+    let message = buildMessage("backup_now");
     sendMessage(message, "backup_request_acknowledged", onBackup);
 }
 
 export function backupAbort(onAbort) {
-    let message = {"code": "backup_abort"};
+    let message = buildMessage("backup_abort");
     sendMessage(message, "backup_abort_acknowledged", onAbort);
 }
 
 export function heartbeat(onAnswer, onError) {
-    let message = {"code": "heartbeat"};
+    let message = buildMessage("heartbeat");
     sendMessageToBcu(
         JSON.stringify(message),
         onAnswer,
@@ -40,7 +40,7 @@ export function heartbeat(onAnswer, onError) {
 }
 
 export function logfileIndex(onAnswer) {
-    let message = {"code": "logfile_index"};
+    let message = buildMessage("logfile_index");
     sendMessageToBcu(
         JSON.stringify(message),
         onAnswer
@@ -48,7 +48,7 @@ export function logfileIndex(onAnswer) {
 }
 
 export function requestLogfile(selectedLogfile, onAnswer) {
-    let message = {"code": "request_logfile", "payload": selectedLogfile};
+    let message = buildMessage("request_logfile", selectedLogfile);
 
     sendMessageToBcu(
         JSON.stringify(message),
@@ -57,7 +57,7 @@ export function requestLogfile(selectedLogfile, onAnswer) {
 }
 
 export function backupIndex(onAnswer) {
-    let message = {"code": "backup_index"};
+    let message = buildMessage("backup_index");
     sendMessageToBcu(
         JSON.stringify(message),
         onAnswer
@@ -65,29 +65,29 @@ export function backupIndex(onAnswer) {
 }
 
 export function buttonSignal(messageCode) {
-    let message = {"code": messageCode};
+    let message = buildMessage(messageCode);
     sendMessageToBcu(
         JSON.stringify(message)
     );
 }
 
 export function setBrightness(brightness) {
-    let message = {"code": "display_brightness", "payload": brightness};
+    let message = buildMessage("display_brightness", brightness);
     sendMessageToBcu(JSON.stringify(message));
 }
 
 export function sendDisplayText(firstLine, secondLine) {
-    let message = {"code": "display_text", "payload" : {"line1": firstLine, "line2": secondLine}};
+    let message = buildMessage("display_text", {"line1": firstLine, "line2": secondLine});
     sendMessageToBcu(JSON.stringify(message));
 }
 
 export function requestConfig(onAnswer) {
-    let message = {"code": "request_config"};
+    let message = buildMessage("request_config");
     sendMessageToBcu(JSON.stringify(message), onAnswer);
 }
 
 export function newConfig(settings) {
-    let message = {"code": "new_config", "payload": JSON.stringify(settings)};
+    let message = buildMessage("new_config", JSON.stringify(settings));
     sendMessageToBcu(JSON.stringify(message));
 }
 
@@ -100,4 +100,15 @@ function sendMessage(message, answerCode, onMessage) {
             }
         }
     );
+}
+
+function buildMessage(code, payload) {
+
+    let message = {"code": code};
+
+    if (payload)
+        message["payload"] = payload;
+
+        return message;
+
 }
