@@ -2,20 +2,20 @@
 var BASE_ADDRESS = "ws://127.0.0.1:8453"
 
 export function sendMessageToBcu(
-        payload,
-        callback = function(){},
-        error_callback = function(error){ console.log(error); alert('[close] Connection died'); }
-    ) {
+    payload,
+    callback = function () { },
+    error_callback = function (error) { console.log(error); alert('[close] Connection died'); }
+) {
     let socket = new WebSocket(BASE_ADDRESS);
-    socket.onopen = function(e) {
+    socket.onopen = function (e) {
         socket.send(payload);
     };
 
-    socket.onerror = function(error) {
+    socket.onerror = function (error) {
         error_callback(error)
     };
 
-    socket.onmessage = function(event) {
+    socket.onmessage = function (event) {
         callback(event.data);
     };
 }
@@ -77,7 +77,7 @@ export function setBrightness(brightness) {
 }
 
 export function sendDisplayText(firstLine, secondLine) {
-    let message = buildMessage("display_text", {"line1": firstLine, "line2": secondLine});
+    let message = buildMessage("display_text", { "line1": firstLine, "line2": secondLine });
     sendMessageToBcu(JSON.stringify(message));
 }
 
@@ -94,7 +94,7 @@ export function newConfig(settings) {
 function sendMessage(message, answerCode, onMessage) {
     sendMessageToBcu(
         JSON.stringify(message),
-        function(answer) {
+        function (answer) {
             if (answerCode == answer) {
                 onMessage();
             }
@@ -104,11 +104,11 @@ function sendMessage(message, answerCode, onMessage) {
 
 function buildMessage(code, payload) {
 
-    let message = {"code": code};
+    let message = { "code": code };
 
     if (payload)
         message["payload"] = payload;
 
-        return message;
+    return message;
 
 }

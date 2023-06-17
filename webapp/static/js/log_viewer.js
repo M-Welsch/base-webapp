@@ -53,10 +53,13 @@ function updateLogfileIndex(logfileIndex) {
 }
 
 function updateLogfileLines(logfileLines) {
-    console.log(logfileLines)
+
     let textarea = document.getElementById("log-view-detailed");
     textarea.textContent = "";
+
     const logfileContent = logfileLines.join("");
+
     textarea.textContent = logfileContent;
     textarea.setAttribute("rows", logfileLines.length)
+
 }
