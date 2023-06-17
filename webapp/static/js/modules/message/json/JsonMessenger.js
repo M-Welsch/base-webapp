@@ -22,83 +22,71 @@ export function sendMessageToBcu(
 
 export function backupNow(onBackup) {
     let message = buildMessage("backup_now");
-    sendMessage(message, "backup_request_acknowledged", onBackup);
+    sendMessage(message, onBackup, "backup_request_acknowledged");
 }
 
 export function backupAbort(onAbort) {
     let message = buildMessage("backup_abort");
-    sendMessage(message, "backup_abort_acknowledged", onAbort);
+    sendMessage(message, onAbort, "backup_abort_acknowledged");
 }
 
 export function heartbeat(onAnswer, onError) {
     let message = buildMessage("heartbeat");
-    sendMessageToBcu(
-        JSON.stringify(message),
-        onAnswer,
-        onError
-    );
+    sendMessage(message, onAnswer, null, onError);
 }
 
 export function logfileIndex(onAnswer) {
     let message = buildMessage("logfile_index");
-    sendMessageToBcu(
-        JSON.stringify(message),
-        onAnswer
-    );
+    sendMessage(message, onAnswer);
 }
 
 export function requestLogfile(selectedLogfile, onAnswer) {
     let message = buildMessage("request_logfile", selectedLogfile);
-
-    sendMessageToBcu(
-        JSON.stringify(message),
-        onAnswer
-    );
+    sendMessage(message, onAnswer);
 }
 
 export function backupIndex(onAnswer) {
     let message = buildMessage("backup_index");
-    sendMessageToBcu(
-        JSON.stringify(message),
-        onAnswer
-    );
+    sendMessage(message, onAnswer);
 }
 
 export function buttonSignal(messageCode) {
     let message = buildMessage(messageCode);
-    sendMessageToBcu(
-        JSON.stringify(message)
-    );
+    sendMessage(message);
 }
 
 export function setBrightness(brightness) {
     let message = buildMessage("display_brightness", brightness);
-    sendMessageToBcu(JSON.stringify(message));
+    sendMessage(message);
 }
 
 export function sendDisplayText(firstLine, secondLine) {
     let message = buildMessage("display_text", { "line1": firstLine, "line2": secondLine });
-    sendMessageToBcu(JSON.stringify(message));
+    sendMessage(message);
 }
 
 export function requestConfig(onAnswer) {
     let message = buildMessage("request_config");
-    sendMessageToBcu(JSON.stringify(message), onAnswer);
+    sendMessage(message, onAnswer);
 }
 
 export function newConfig(settings) {
     let message = buildMessage("new_config", JSON.stringify(settings));
-    sendMessageToBcu(JSON.stringify(message));
+    sendMessage(message);
 }
 
-function sendMessage(message, answerCode, onMessage) {
+function sendMessage(message, onMessage, answerCode, onError) {
+
+    var answerCodeHandler = function onAnswer(answer) {
+        if (answerCode == answer) {
+            onMessage();
+        }
+    }
+    
     sendMessageToBcu(
         JSON.stringify(message),
-        function (answer) {
-            if (answerCode == answer) {
-                onMessage();
-            }
-        }
+        answerCode ? answerCodeHandler : onMessage,
+        onError
     );
 }
 
