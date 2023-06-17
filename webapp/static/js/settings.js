@@ -90,32 +90,82 @@ function onSave() {
 
 
 function onIntervalChange() {
-    switch ( document.getElementById("interval").value ) {
+
+    const dayOfMonthSelect = document.getElementById("day-of-month-item");
+    const dayOfWeekSelect = document.getElementById("day-of-week-item");
+
+    const backupInterval = document.getElementById("interval").value;
+
+    switch ( backupInterval ) {
         case "months":
-            document.getElementById("day-of-month-item").style.display = "";
-            document.getElementById("day-of-week-item").style.display = "none";
+            showDayOfMonthSelect();
+            hideDayOfWeekSelect();
             break;
         case "weeks":
-            document.getElementById("day-of-month-item").style.display = "none";
-            document.getElementById("day-of-week-item").style.display = "";
+            hideDayOfMonthSelect();
+            showDayOfWeekSelect();
             break;
         case "days":
-            document.getElementById("day-of-month-item").style.display = "none";
-            document.getElementById("day-of-week-item").style.display = "none";
+            hideDayOfMonthSelect();
+            hideDayOfWeekSelect();
             break;
     }
+
+    function showDayOfMonthSelect() {
+        setElementVisible(dayOfMonthSelect, true);
+    }
+
+    function hideDayOfMonthSelect() {
+        setElementVisible(dayOfMonthSelect, false);
+    }
+
+    function showDayOfWeekSelect() {
+        setElementVisible(dayOfWeekSelect, true);
+    }
+
+    function hideDayOfWeekSelect() {
+        setElementVisible(dayOfWeekSelect, false);
+    }
+
 }
 
 
 function onProtocolChange() {
-    switch ( document.querySelector('input[name="protocol"]:checked').value ) {
+
+    const sshSourceParametersElement = document.getElementById("ssh-source-parameters");
+    const smbSourceParametersElement = document.getElementById("smb-source-parameters");
+
+    const selectedProtocol = document.querySelector('input[name="protocol"]:checked').value;
+
+    switch ( selectedProtocol ) {
         case "ssh":
-            document.getElementById("ssh-source-parameters").style.display = "";
-            document.getElementById("smb-source-parameters").style.display = "none";
+            showSSHParameters();
+            hideSMBParameters();
             break;
         case "smb":
-            document.getElementById("ssh-source-parameters").style.display = "none";
-            document.getElementById("smb-source-parameters").style.display = "";
+            hideSSHParameters();
+            showSMBParameters();
             break;
     }
+
+    function showSSHParameters() {
+        setElementVisible(sshSourceParametersElement, true);
+    }
+
+    function hideSSHParameters() {
+        setElementVisible(sshSourceParametersElement, false);
+    }
+
+    function showSMBParameters() {
+        setElementVisible(smbSourceParametersElement, true);
+    }
+
+    function hideSMBParameters() {
+        setElementVisible(smbSourceParametersElement, false);
+    }
 }
+
+function setElementVisible(element, isVisible) {
+    element.style.display = isVisible ? "" : "none";
+}
+
