@@ -31,7 +31,7 @@ function onSettingsReceive(settings) {
 function distributeConfigData(answer) {
     let config_data = JSON.parse(answer);
     console.log(config_data);
-    let time = config_data["schedule_backup"]["hour"]+":"+config_data["schedule_backup"]["minute"];
+    let time = config_data["schedule_backup"]["hour"] + ":" + config_data["schedule_backup"]["minute"];
     document.getElementById("time-of-day").value = time;
 
     document.getElementById("interval").value = config_data["schedule_backup"]["backup_interval"];
@@ -84,7 +84,7 @@ function onSave() {
             "protocol": document.querySelector('input[name="protocol"]:checked').value
         }
     }
-    console.log( settings );
+    console.log(settings);
     BcuMessenger.send().newConfig(settings);
 }
 
@@ -96,7 +96,7 @@ function onIntervalChange() {
 
     const backupInterval = document.getElementById("interval").value;
 
-    switch ( backupInterval ) {
+    switch (backupInterval) {
         case "months":
             showDayOfMonthSelect();
             hideDayOfWeekSelect();
@@ -137,7 +137,7 @@ function onProtocolChange() {
 
     const selectedProtocol = document.querySelector('input[name="protocol"]:checked').value;
 
-    switch ( selectedProtocol ) {
+    switch (selectedProtocol) {
         case "ssh":
             showSSHParameters();
             hideSMBParameters();

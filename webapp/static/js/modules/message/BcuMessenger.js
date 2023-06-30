@@ -9,6 +9,6 @@ BcuMessenger.send = function () {
     return new BcuCommand();
 }
 
-BcuMessenger.query = function() {
+BcuMessenger.query = function () {
     return new BcuQuery();
 }

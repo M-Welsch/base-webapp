@@ -42,7 +42,7 @@ function setStatusPartial(status_element) {
 }
 
 function setStatusOpacity(status_element, status_opacity) {
-    
+
     status_element.style.opacity = status_opacity;
 
 }

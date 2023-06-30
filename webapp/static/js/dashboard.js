@@ -5,7 +5,7 @@ import { registerButtons } from "./modules/dashboard/backup/components/buttons.j
     registerButtons();
 })()
 
-export function displayDashboardData( current_status ) {
+export function displayDashboardData(current_status) {
 
     var availability = current_status["diagnose"]["Backup-HDD verfügbar"];
     var hddUsagePercentage = current_status["backup_hdd_usage"];
@@ -32,12 +32,12 @@ function setDiscUsage(availability, percentage) {
 
     document.getElementById("backup-hdd-usage-percentage").textContent = ~~percentage;
     document.getElementById("hdd-space-used").style.width = `${percentage} %`;
-    if ( availability == "available" ) {
+    if (availability == "available") {
         setElements("#333", "block", "none");
     } else {
         setElements("gray", "none", "block");
     }
-    
+
     function setElements(bgColor, display1, display2) {
         document.getElementById("hdd-space-free").style.backgroundColor = bgColor;
         document.getElementById("backup-hdd-usage-text").style.display = display1;

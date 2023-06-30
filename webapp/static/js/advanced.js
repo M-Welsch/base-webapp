@@ -1,6 +1,6 @@
 import { BcuMessenger } from "./modules/message/BcuMessenger.js";
 
-function onPageLoad() {}
+function onPageLoad() { }
 
 (function setupIIFE() {
     var buttonSignalMapping = {
@@ -12,7 +12,7 @@ function onPageLoad() {}
         "button-unmount": "unmount",
         "button-shutdown": "shutdown"
     }
-    
+
     for (const [id, onClick] of Object.entries(buttonSignalMapping)) {
         var button = document.getElementById(id);
         if (button)
@@ -20,14 +20,14 @@ function onPageLoad() {}
     }
 
     var brightnessSlider = document.getElementById("slider-brightness");
-    
+
     if (brightnessSlider) {
         setBrightness();
         brightnessSlider.addEventListener("change", setBrightness);
     }
 
     var displayTexSendtElement = document.getElementById("display-text-send");
-    
+
     if (displayTexSendtElement)
         displayTexSendtElement.addEventListener("click", onDisplayTextSend);
 })();
@@ -36,7 +36,7 @@ function buttonSignal(message_code) {
     BcuMessenger.send().buttonSignal(message_code);
 }
 
-export function displayAdvancedData( current_status ) {
+export function displayAdvancedData(current_status) {
 
     var dockButton = document.getElementById("button-dock");
     var undockButton = document.getElementById("button-undock");
@@ -44,17 +44,17 @@ export function displayAdvancedData( current_status ) {
     const dockedStatusKey = "docked";
 
     const isDocked = current_status[dockedStatusKey];
-    
+
     dockButton.disabled = isDocked;
     undockButton.disabled = !isDocked;
 
-    populateDiagnoseTable( current_status["diagnose"] );
+    populateDiagnoseTable(current_status["diagnose"]);
 
 
 }
 
-function populateDiagnoseTable( data ) {
-    function appendSpan(text, suffix="") {
+function populateDiagnoseTable(data) {
+    function appendSpan(text, suffix = "") {
         let span = document.createElement("span");
         span.appendChild(document.createTextNode(text + suffix));
         table.appendChild(span);

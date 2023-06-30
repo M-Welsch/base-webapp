@@ -1,7 +1,7 @@
 import { BcuMessenger } from "./modules/message/BcuMessenger.js";
 
 (function onPageLoad() {
-    
+
     BcuMessenger.send().logfileIndex(function onLogfileIndexReceive(answer) {
         let logfileIndex = JSON.parse(answer)
         updateLogfileIndex(logfileIndex);
@@ -45,7 +45,7 @@ function updateLogfileIndex(logfileIndex) {
     }
 
     function addOptionToSelect(option) {
-        
+
         select.add(option);
 
     }

@@ -83,7 +83,7 @@ function sendMessage(message, onMessage, answerCode, onError) {
             onMessage();
         }
     }
-    
+
     sendMessageToBcu(
         JSON.stringify(message),
         answerCode ? answerCodeHandler : onMessage,
