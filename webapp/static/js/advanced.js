@@ -37,9 +37,20 @@ function buttonSignal(message_code) {
 }
 
 export function displayAdvancedData( current_status ) {
-    document.getElementById("button-dock").disabled = current_status["docked"];
-    document.getElementById("button-undock").disabled = !current_status["docked"];
+
+    var dockButton = document.getElementById("button-dock");
+    var undockButton = document.getElementById("button-undock");
+
+    const dockedStatusKey = "docked";
+
+    const isDocked = current_status[dockedStatusKey];
+    
+    dockButton.disabled = isDocked;
+    undockButton.disabled = !isDocked;
+
     populateDiagnoseTable( current_status["diagnose"] );
+
+
 }
 
 function populateDiagnoseTable( data ) {
