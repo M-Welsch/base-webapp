@@ -12,7 +12,7 @@ export function registerButtons() {
 
     setupBackupButton(backupNowButton, backupWrapper, abortBackupWrapper);
 
-    setupBackupAbortButton(backupAbortButton, abortBackupWrapper, backupWrapper);
+    setupBackupAbortButton(backupAbortButton, backupWrapper, abortBackupWrapper);
 
     const bannerDismiss = document.getElementById("banner-dismiss");
 
@@ -28,30 +28,49 @@ export function registerButtons() {
 
 }
 
-function setupBackupAbortButton(backupAbortButton, abortBackupWrapper, backupWrapper) {
-    if (backupAbortButton) {
+function setupBackupAbortButton(backupAbortButton, backupWrapper, abortBackupWrapper) {
 
-        backupAbortButton.addEventListener("click", function onBackupAbortClick() {
-            BcuMessenger.send().backupAbort(function onAbort() {
-                abortBackupWrapper.style.display = "none";
-                backupWrapper.style.display = "grid";
-            });
+    setupButton(backupAbortButton, function onBackupAbortClick() {
+
+        BcuMessenger.send().backupAbort(function onAbort() {
+
+            setupBackupWrappers(backupWrapper, abortBackupWrapper, true);
+
         });
 
-    }
+    });
+
 }
 
 function setupBackupButton(backupNowButton, backupWrapper, abortBackupWrapper) {
-    if (backupNowButton) {
 
-        backupNowButton.addEventListener("click", function onBackupNowClick() {
-            BcuMessenger.send().backupNow(function onBackup() {
-                backupWrapper.style.display = "none";
-                abortBackupWrapper.style.display = "grid";
-            });
+    setupButton(backupNowButton, function onBackupNowClick() {
+
+        BcuMessenger.send().backupNow(function onBackup() {
+
+            setupBackupWrappers(backupWrapper, abortBackupWrapper, false);
+
         });
 
+    });
+
+}
+
+function setupButton(clickedButton, onButtonClick) {
+
+    if (clickedButton) {
+
+        clickedButton.addEventListener("click", onButtonClick);
+
     }
+
+}
+
+function setupBackupWrappers(backupWrapper, abortBackupWrapper, backupTriggered) {
+
+    abortBackupWrapper.style.display = backupTriggered ? "grid" : "none";
+    backupWrapper.style.display = backupTriggered ? "none" : "grid";
+
 }
 
 function dismissWarningBanner() {
