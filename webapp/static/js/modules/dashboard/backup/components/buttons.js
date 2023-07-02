@@ -1,3 +1,4 @@
+import { setupButton } from "/static/js/modules/utils/ComponentUtils.js";
 import { BcuMessenger } from "/static/js/modules/message/BcuMessenger.js";
 
 export function registerButtons() {
@@ -53,16 +54,6 @@ function setupBackupButton(backupNowButton, backupWrapper, abortBackupWrapper) {
         });
 
     });
-
-}
-
-function setupButton(clickedButton, onButtonClick) {
-
-    if (clickedButton) {
-
-        clickedButton.addEventListener("click", onButtonClick);
-
-    }
 
 }
 
