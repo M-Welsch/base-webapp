@@ -1,20 +1,17 @@
 import { BcuMessenger } from "./modules/message/BcuMessenger.js";
-import { onElementClick } from "./modules/utils/ElementUtils.js";
+import { onElementChange, onElementClick } from "./modules/utils/ElementUtils.js";
 
 (function onPageLoad() {
     BcuMessenger.send().requestConfig(onSettingsReceive);
 
     const intervalElement = document.getElementById("interval");
-    if (intervalElement)
-        intervalElement.addEventListener("change", onIntervalChange);
+    onElementChange(intervalElement, onIntervalChange);
 
     const sshElement = document.getElementById("ssh");
-    if (sshElement)
-        sshElement.addEventListener("change", onProtocolChange);
+    onElementChange(sshElement, onProtocolChange);
 
     const smbElement = document.getElementById("smb");
-    if (smbElement)
-        smbElement.addEventListener("change", onProtocolChange);
+    onElementChange(smbElement, onProtocolChange);
 
     const saveConfigElement = document.getElementById("save-config");
     onElementClick(saveConfigElement, onSave);

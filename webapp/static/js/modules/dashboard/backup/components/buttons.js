@@ -17,8 +17,7 @@ export function registerButtons() {
 
     const bannerDismiss = document.getElementById("banner-dismiss");
 
-    if (bannerDismiss)
-        bannerDismiss.addEventListener("click", dismissWarningBanner)
+    onElementClick(bannerDismiss, dismissWarningBanner);
 
     function getAbortBackupWrapper() {
         const abortBackupWrapper = document.getElementById("abort-backup-wrapper");

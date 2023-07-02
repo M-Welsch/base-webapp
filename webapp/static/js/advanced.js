@@ -1,5 +1,5 @@
 import { BcuMessenger } from "./modules/message/BcuMessenger.js";
-import { onElementClick } from "./modules/utils/ElementUtils.js";
+import { onElementChange, onElementClick } from "./modules/utils/ElementUtils.js";
 
 function onPageLoad() { }
 
@@ -23,7 +23,7 @@ function onPageLoad() { }
 
     if (brightnessSlider) {
         setBrightness();
-        brightnessSlider.addEventListener("change", setBrightness);
+        onElementChange(brightnessSlider, setBrightness);
     }
 
     var displayTextSendElement = document.getElementById("display-text-send");

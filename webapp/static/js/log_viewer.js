@@ -1,4 +1,5 @@
 import { BcuMessenger } from "./modules/message/BcuMessenger.js";
+import { onElementChange } from "./modules/utils/ElementUtils.js";
 
 (function onPageLoad() {
 
@@ -9,8 +10,7 @@ import { BcuMessenger } from "./modules/message/BcuMessenger.js";
     });
 
     const logSelectElement = document.getElementById("log-select");
-    if (logSelectElement)
-        logSelectElement.addEventListener("change", onLogSelect);
+    onElementChange(logSelectElement, onLogSelect);
 })()
 
 function onLogSelect() {
