@@ -1,4 +1,4 @@
-import { setupButton } from "/static/js/modules/utils/ComponentUtils.js";
+import { onElementClick } from "/static/js/modules/utils/ElementUtils..js";
 import { BcuMessenger } from "/static/js/modules/message/BcuMessenger.js";
 
 export function registerButtons() {
@@ -31,7 +31,7 @@ export function registerButtons() {
 
 function setupBackupAbortButton(backupAbortButton, backupWrapper, abortBackupWrapper) {
 
-    setupButton(backupAbortButton, function onBackupAbortClick() {
+    onElementClick(backupAbortButton, function onBackupAbortClick() {
 
         BcuMessenger.send().backupAbort(function onAbort() {
 
@@ -45,7 +45,7 @@ function setupBackupAbortButton(backupAbortButton, backupWrapper, abortBackupWra
 
 function setupBackupButton(backupNowButton, backupWrapper, abortBackupWrapper) {
 
-    setupButton(backupNowButton, function onBackupNowClick() {
+    onElementClick(backupNowButton, function onBackupNowClick() {
 
         BcuMessenger.send().backupNow(function onBackup() {
 
