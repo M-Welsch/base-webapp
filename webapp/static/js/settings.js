@@ -1,4 +1,5 @@
 import { BcuMessenger } from "./modules/message/BcuMessenger.js";
+import { onElementClick } from "./modules/utils/ElementUtils.js";
 
 (function onPageLoad() {
     BcuMessenger.send().requestConfig(onSettingsReceive);
@@ -16,8 +17,7 @@ import { BcuMessenger } from "./modules/message/BcuMessenger.js";
         smbElement.addEventListener("change", onProtocolChange);
 
     const saveConfigElement = document.getElementById("save-config");
-    if (saveConfigElement)
-        saveConfigElement.addEventListener("click", onSave);
+    onElementClick(saveConfigElement, onSave);
 })()
 
 

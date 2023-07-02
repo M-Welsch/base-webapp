@@ -1,4 +1,5 @@
 import { BcuMessenger } from "./modules/message/BcuMessenger.js";
+import { onElementClick } from "./modules/utils/ElementUtils.js";
 
 function onPageLoad() { }
 
@@ -15,8 +16,7 @@ function onPageLoad() { }
 
     for (const [id, onClick] of Object.entries(buttonSignalMapping)) {
         var button = document.getElementById(id);
-        if (button)
-            button.addEventListener("click", buttonSignal(onClick));
+        onElementClick(button, buttonSignal(onClick));
     }
 
     var brightnessSlider = document.getElementById("slider-brightness");
@@ -26,10 +26,9 @@ function onPageLoad() { }
         brightnessSlider.addEventListener("change", setBrightness);
     }
 
-    var displayTexSendtElement = document.getElementById("display-text-send");
+    var displayTextSendElement = document.getElementById("display-text-send");
 
-    if (displayTexSendtElement)
-        displayTexSendtElement.addEventListener("click", onDisplayTextSend);
+    onElementClick(displayTextSendElement, onDisplayTextSend);
 })();
 
 function buttonSignal(message_code) {
