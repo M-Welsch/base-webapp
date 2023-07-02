@@ -1,23 +1,25 @@
-const CLICK_ACTION = "click";
-const CHANGE_ACTION = "change";
+const WEBAPP_EVENT_TYPES = {
+    click: "click",
+    change: "change"
+}
 
 export function onElementClick(element, onClick) {
 
-    onElementAction(element, CLICK_ACTION, onClick);
+    onElementEvent(element, WEBAPP_EVENT_TYPES.click, onClick);
 
 }
 
 export function onElementChange(element, onChange) {
 
-    onElementAction(element, CHANGE_ACTION, onChange);
+    onElementEvent(element, WEBAPP_EVENT_TYPES.change, onChange);
 
 }
 
-function onElementAction(element, actionType, onAction) {
-    
+function onElementEvent(element, eventType, onEvent) {
+
     if (element) {
 
-        element.addEventListener(actionType, onAction);
+        element.addEventListener(eventType, onEvent);
 
     }
 }
