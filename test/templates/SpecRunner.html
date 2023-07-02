@@ -15,9 +15,11 @@
 
   <!-- include source files here... -->
   <script src="{{ url_for('send_static_asset', filename='js/modules/dashboard/status.js') }}" type="module"></script>
+  <script src="{{ url_for('send_static_asset', filename='js/modules/utils/ElementUtils.js') }}" type="module"></script>
 
   <!-- include spec files here... -->
   <script src="{{ url_for('static', filename='js/jasmine/spec/modules/dashboard/statusSpec.js') }}" type="module"></script>
+  <script src="{{ url_for('static', filename='js/jasmine/spec/modules/utils/ElementUtilsSpec.js') }}" type="module"></script>
 
 </head>
 
