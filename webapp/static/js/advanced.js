@@ -3,7 +3,7 @@ import { onElementChange, onElementClick } from "./modules/utils/ElementUtils.js
 
 function onPageLoad() { }
 
-(function setupIIFE() {
+function setup() {
     var buttonSignalMapping = {
         "button-dock": "dock",
         "button-undock": "undock",
@@ -29,14 +29,14 @@ function onPageLoad() { }
     var displayTextSendElement = document.getElementById("display-text-send");
 
     onElementClick(displayTextSendElement, onDisplayTextSend);
-})();
+}
 
 function buttonSignal(message_code) {
     BcuMessenger.send().buttonSignal(message_code);
 }
 
 export function displayAdvancedData(current_status) {
-
+    setup();
     var dockButton = document.getElementById("button-dock");
     var undockButton = document.getElementById("button-undock");
 
