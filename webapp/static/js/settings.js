@@ -1,8 +1,10 @@
 import { BcuMessenger } from "./modules/message/BcuMessenger.js";
+import SettingsClient from "./modules/settings/SettingsClient.js";
 import { onElementChange, onElementClick } from "./modules/utils/ElementUtils.js";
 
 (function onPageLoad() {
-    BcuMessenger.send().requestConfig(onSettingsReceive);
+    let settingsClient = new SettingsClient();
+    settingsClient.requestConfig(onSettingsReceive);
 
     const intervalElement = document.getElementById("interval");
     onElementChange(intervalElement, onIntervalChange);
@@ -52,8 +54,18 @@ function distributeConfigData(answer) {
 }
 
 function onSave() {
+
+    let settings = getNewSettings();
+
+    let settingsClient = new SettingsClient();
+    settingsClient.newConfig(settings);
+}
+
+function getNewSettings() {
+    
     let [hour, minute] = document.getElementById("time-of-day").value.split(":");
-    let settings = {
+ 
+    return {
         "schedule_backup": {
             "backup_interval": document.getElementById("interval").value,
             "day_of_month": Number(document.getElementById("day-of-month").value),
@@ -80,11 +92,9 @@ function onSave() {
         "sync": {
             "protocol": document.querySelector('input[name="protocol"]:checked').value
         }
-    }
-    console.log(settings);
-    BcuMessenger.send().newConfig(settings);
-}
+    };
 
+}
 
 function onIntervalChange() {
 
