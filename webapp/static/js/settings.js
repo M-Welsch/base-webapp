@@ -1,4 +1,3 @@
-import { BcuMessenger } from "./modules/message/BcuMessenger.js";
 import SettingsClient from "./modules/settings/SettingsClient.js";
 import { onElementChange, onElementClick } from "./modules/utils/ElementUtils.js";
 

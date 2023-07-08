@@ -1,17 +1,20 @@
-import { BcuMessenger } from "./modules/message/BcuMessenger.js";
 import LogViewerClient from "./modules/log_viewer/LogViewerClient.js";
 import { onElementChange } from "./modules/utils/ElementUtils.js";
 
 (function onPageLoad() {
 
-    BcuMessenger.send().logfileIndex(function onLogfileIndexReceive(answer) {
-        let logfileIndex = JSON.parse(answer)
+    let logViewerClient = new LogViewerClient();
+    
+    logViewerClient.requestLogFileIndex(function onLogFileIndexReceive (logfileIndex) {
+
         updateLogfileIndex(logfileIndex);
         onLogSelect();
+
     });
 
     const logSelectElement = document.getElementById("log-select");
     onElementChange(logSelectElement, onLogSelect);
+
 })()
 
 function onLogSelect() {
