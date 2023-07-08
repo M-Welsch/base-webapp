@@ -1,4 +1,4 @@
-import { BcuMessenger } from "../message/BcuMessenger";
+import { BcuMessenger } from "../message/BcuMessenger.js";
 
 /**
  * SettingsClient

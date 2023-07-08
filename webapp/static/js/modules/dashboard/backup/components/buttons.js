@@ -1,4 +1,4 @@
-import { onElementClick } from "/static/js/modules/utils/ElementUtils..js";
+import { onElementClick } from "/static/js/modules/utils/ElementUtils.js";
 import { BcuMessenger } from "/static/js/modules/message/BcuMessenger.js";
 
 export function registerButtons() {

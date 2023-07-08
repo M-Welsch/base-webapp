@@ -28,9 +28,10 @@ function onElementEvent(element, eventType, onEvent) {
 
         element.addEventListener(eventType, onEvent);
 
+        element.setAttribute(eventTypeAttribute, "true");
+
     }
 
-    element.setAttribute(eventTypeAttribute, "true");
 
 }
 
