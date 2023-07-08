@@ -32,7 +32,9 @@ function setup() {
 }
 
 function buttonSignal(message_code) {
-    BcuMessenger.send().buttonSignal(message_code);
+    return function onClick() {
+        BcuMessenger.send().buttonSignal(message_code);
+    }
 }
 
 export function displayAdvancedData(current_status) {
