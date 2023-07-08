@@ -3,6 +3,8 @@ import { onElementChange, onElementClick } from "./modules/utils/ElementUtils.js
 
 function onPageLoad() { }
 
+setBrightness();
+
 function setup() {
     var buttonSignalMapping = {
         "button-dock": "dock",
@@ -22,7 +24,6 @@ function setup() {
     var brightnessSlider = document.getElementById("slider-brightness");
 
     if (brightnessSlider) {
-        setBrightness();
         onElementChange(brightnessSlider, setBrightness);
     }
 
