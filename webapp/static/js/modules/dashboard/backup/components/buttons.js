@@ -1,5 +1,6 @@
 import { onElementClick } from "/static/js/modules/utils/ElementUtils.js";
-import { BcuMessenger } from "/static/js/modules/message/BcuMessenger.js";
+import BackupConductor from "/static/js/modules/backup/conductor/BackupConductor.js"
+
 
 export function registerButtons() {
 
@@ -32,11 +33,13 @@ function setupBackupAbortButton(backupAbortButton, backupWrapper, abortBackupWra
 
     onElementClick(backupAbortButton, function onBackupAbortClick() {
 
-        BcuMessenger.send().backupAbort(function onAbort() {
+        let backupConductor = new BackupConductor();
 
-            setupBackupWrappers(backupWrapper, abortBackupWrapper, true);
+        backupConductor.abort(function onBackup() {
 
-        });
+            setupBackupWrappers(backupWrapper, abortBackupWrapper, false);
+
+        })
 
     });
 
@@ -46,11 +49,13 @@ function setupBackupButton(backupNowButton, backupWrapper, abortBackupWrapper) {
 
     onElementClick(backupNowButton, function onBackupNowClick() {
 
-        BcuMessenger.send().backupNow(function onBackup() {
+        let backupConductor = new BackupConductor();
+
+        backupConductor.backup(function onBackup() {
 
             setupBackupWrappers(backupWrapper, abortBackupWrapper, false);
 
-        });
+        })
 
     });
 

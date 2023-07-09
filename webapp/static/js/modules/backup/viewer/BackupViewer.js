@@ -1,4 +1,4 @@
-import { BcuMessenger } from "../message/BcuMessenger.js";
+import { BcuMessenger } from "../../message/BcuMessenger.js";
 
 /**
  * BackupViewer

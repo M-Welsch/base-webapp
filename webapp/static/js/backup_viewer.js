@@ -1,4 +1,4 @@
-import BackupViewer from "./modules/backup_viewer/BackupViewer.js";
+import BackupViewer from "./modules/backup/viewer/BackupViewer.js";
 
 (function onPageLoad() {
 
