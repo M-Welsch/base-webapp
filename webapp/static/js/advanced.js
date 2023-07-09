@@ -73,9 +73,12 @@ function populateDiagnoseTable(data) {
 
 
 function setBrightness() {
-    let brightness = document.getElementById("slider-brightness").value;
-    document.getElementById("brightness-value").textContent = brightness;
-    BcuMessenger.send().setBrightness(brightness);
+    let brightnessSlider = document.getElementById("slider-brightness");
+    if (brightnessSlider) {
+        let brightness = document.getElementById("slider-brightness").value;
+        document.getElementById("brightness-value").textContent = brightness;
+        BcuMessenger.send().setBrightness(brightness);
+    }
 }
 
 function onDisplayTextSend() {
