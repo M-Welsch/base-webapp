@@ -1,9 +1,9 @@
-import SettingsClient from "./modules/settings/SettingsClient.js";
+import BackupConfigurator from "./modules/settings/SettingsClient.js";
 import { onElementChange, onElementClick } from "./modules/utils/ElementUtils.js";
 
 (function onPageLoad() {
-    let settingsClient = new SettingsClient();
-    settingsClient.requestConfig(onSettingsReceive);
+    let backupConfigurator = new BackupConfigurator();
+    backupConfigurator.requestConfig(onSettingsReceive);
 
     const intervalElement = document.getElementById("interval");
     onElementChange(intervalElement, onIntervalChange);
@@ -56,8 +56,8 @@ function onSave() {
 
     let settings = getNewSettings();
 
-    let settingsClient = new SettingsClient();
-    settingsClient.newConfig(settings);
+    let backupConfigurator = new BackupConfigurator();
+    backupConfigurator.newConfig(settings);
 }
 
 function getNewSettings() {

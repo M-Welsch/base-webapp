@@ -4,7 +4,7 @@ import { BcuMessenger } from "../message/BcuMessenger.js";
  * SettingsClient
  * @constructor
  */
-function SettingsClient() {
+function BackupConfigurator() {
 
 }
 
@@ -13,7 +13,7 @@ function SettingsClient() {
  *
  * @param {function(string):void} applyOnConfig The callback that should be applied on the received configuration string
  */
-SettingsClient.prototype.requestConfig = function (applyOnConfig) {
+BackupConfigurator.prototype.requestConfig = function (applyOnConfig) {
     
     BcuMessenger.send().requestConfig(function onConfigReceive(answer) {
 
@@ -28,10 +28,10 @@ SettingsClient.prototype.requestConfig = function (applyOnConfig) {
  *
  * @param {Object} newSettings The new settings JSON object
  */
-SettingsClient.prototype.newConfig = function (newSettings) {
+BackupConfigurator.prototype.newConfig = function (newSettings) {
     
     BcuMessenger.send().newConfig(newSettings);
 
 }
 
-export default SettingsClient;
+export default BackupConfigurator;
