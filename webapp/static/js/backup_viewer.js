@@ -1,10 +1,13 @@
-import { BcuMessenger } from "./modules/message/BcuMessenger.js";
+import BackupViewer from "./modules/backup_viewer/BackupViewer.js";
 
 (function onPageLoad() {
-    BcuMessenger.send().backupIndex(function onBackupIndexReceive(answer) {
+
+    let backupViewer = new BackupViewer();
+    backupViewer.backupIndex(function onBackupIndexReceive(answer) {
         let backupIndex = JSON.parse(answer)
         updateBackupIndex(backupIndex);
-    });
+    })
+
 })();
 
 function updateBackupIndex(backupIndex) {
