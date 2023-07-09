@@ -1,11 +1,11 @@
-import LogViewerClient from "./modules/log_viewer/LogViewerClient.js";
+import LogViewer from "./modules/log_viewer/LogViewerClient.js";
 import { onElementChange } from "./modules/utils/ElementUtils.js";
 
 (function onPageLoad() {
 
-    let logViewerClient = new LogViewerClient();
+    let logViewer = new LogViewer();
     
-    logViewerClient.requestLogFileIndex(function onLogFileIndexReceive (logfileIndex) {
+    logViewer.requestLogFileIndex(function onLogFileIndexReceive (logfileIndex) {
 
         updateLogfileIndex(logfileIndex);
         onLogSelect();
@@ -21,8 +21,8 @@ function onLogSelect() {
 
     let element = document.getElementById("log-select");
     let selectedLogFile = element.options[element.selectedIndex].value;
-    let logViewerClient = new LogViewerClient();
-    logViewerClient.requestLogFile(selectedLogFile, updateLogfileLines);
+    let logViewer = new LogViewer();
+    logViewer.requestLogFile(selectedLogFile, updateLogfileLines);
 
 }
 

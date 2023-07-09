@@ -4,7 +4,7 @@ import { BcuMessenger } from "../message/BcuMessenger.js";
  * LogViewerClient
  * @constructor
  */
-function LogViewerClient() {
+function LogViewer() {
 
 }
 
@@ -13,7 +13,7 @@ function LogViewerClient() {
  *
  * @param {function(Array.<string>):void} applyOnLogFileIndex The callback that should be applied on the received logfile index
  */
-LogViewerClient.prototype.requestLogFileIndex = function (applyOnLogFileIndex) {
+LogViewer.prototype.requestLogFileIndex = function (applyOnLogFileIndex) {
     
     BcuMessenger.send().logfileIndex(function onLogfileIndexReceive(answer) {
 
@@ -30,7 +30,7 @@ LogViewerClient.prototype.requestLogFileIndex = function (applyOnLogFileIndex) {
  * @param {string} selectedLogFile The selected log file
  * @param {function(Array.<string>):void} applyOnLogFile The callback that should be applied on the received logfile
  */
-LogViewerClient.prototype.requestLogFile = function (selectedLogFile, applyOnLogFile) {
+LogViewer.prototype.requestLogFile = function (selectedLogFile, applyOnLogFile) {
     
     BcuMessenger.send().requestLogfile(selectedLogFile, function onLogfileReceive(answer) {
 
@@ -41,4 +41,4 @@ LogViewerClient.prototype.requestLogFile = function (selectedLogFile, applyOnLog
 
 }
 
-export default LogViewerClient;
+export default LogViewer;
