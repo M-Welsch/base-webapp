@@ -1,8 +1,9 @@
-import { BcuMessenger } from "./modules/message/BcuMessenger.js";
+import BackupAdministrator from "./modules/advanced/BackupAdministrator.js";
 import { onElementChange, onElementClick } from "./modules/utils/ElementUtils.js";
 
 function onPageLoad() { }
 
+setup();
 setBrightness();
 
 function setup() {
@@ -32,14 +33,15 @@ function setup() {
     onElementClick(displayTextSendElement, onDisplayTextSend);
 }
 
-function buttonSignal(message_code) {
+function buttonSignal(controlSignal) {
     return function onClick() {
-        BcuMessenger.send().buttonSignal(message_code);
+        let backupAdministrator = new BackupAdministrator();
+        backupAdministrator.submitSignal(controlSignal);
     }
 }
 
 export function displayAdvancedData(current_status) {
-    setup();
+
     var dockButton = document.getElementById("button-dock");
     var undockButton = document.getElementById("button-undock");
 
@@ -51,7 +53,6 @@ export function displayAdvancedData(current_status) {
     undockButton.disabled = !isDocked;
 
     populateDiagnoseTable(current_status["diagnose"]);
-
 
 }
 
@@ -74,15 +75,23 @@ function populateDiagnoseTable(data) {
 
 function setBrightness() {
     let brightnessSlider = document.getElementById("slider-brightness");
+
     if (brightnessSlider) {
-        let brightness = document.getElementById("slider-brightness").value;
+
+        let brightness = brightnessSlider.value;
+
         document.getElementById("brightness-value").textContent = brightness;
-        BcuMessenger.send().setBrightness(brightness);
+
+        let backupAdministrator = new BackupAdministrator();
+        backupAdministrator.setBrightness(brightness);
+
     }
+
 }
 
 function onDisplayTextSend() {
     let line1 = document.getElementById("display-line-1").value;
     let line2 = document.getElementById("display-line-2").value;
-    BcuMessenger.send().sendDisplayText(line1, line2)
+    let backupAdministrator = new BackupAdministrator();
+    backupAdministrator.setDisplayText(line1, line2);
 }

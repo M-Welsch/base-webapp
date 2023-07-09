@@ -56,7 +56,6 @@ export function buttonSignal(messageCode) {
 }
 
 export function setBrightness(brightness) {
-    brightness = typeof brightness === "string" ? Number(brightness) : brightness;
 
     let message = buildMessage("display_brightness", brightness);
     sendMessage(message);
