@@ -1,7 +1,7 @@
 import { BcuMessenger } from "../message/BcuMessenger.js";
 
 /**
- * LogViewerClient
+ * LogViewer
  * @constructor
  */
 function LogViewer() {

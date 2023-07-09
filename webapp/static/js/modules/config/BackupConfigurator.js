@@ -1,7 +1,7 @@
 import { BcuMessenger } from "../message/BcuMessenger.js";
 
 /**
- * SettingsClient
+ * BackupConfigurator
  * @constructor
  */
 function BackupConfigurator() {
