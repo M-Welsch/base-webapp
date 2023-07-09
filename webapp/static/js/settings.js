@@ -1,4 +1,4 @@
-import BackupConfigurator from "./modules/settings/SettingsClient.js";
+import BackupConfigurator from "./modules/settings/BackupConfigurator.js";
 import { onElementChange, onElementClick } from "./modules/utils/ElementUtils.js";
 
 (function onPageLoad() {
