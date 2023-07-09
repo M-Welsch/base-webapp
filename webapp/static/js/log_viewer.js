@@ -1,4 +1,4 @@
-import LogViewer from "./modules/log_viewer/LogViewer.js";
+import LogViewer from "./modules/log/LogViewer.js";
 import { onElementChange } from "./modules/utils/ElementUtils.js";
 
 (function onPageLoad() {
