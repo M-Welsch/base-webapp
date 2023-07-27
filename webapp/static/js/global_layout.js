@@ -1,6 +1,6 @@
-import { BcuMessenger } from "./modules/message/BcuMessenger.js";
 import { displayDashboardData } from "./dashboard.js";
 import { displayAdvancedData } from "./advanced.js";
+import Heartbeat from "./modules/heartbeat/Heartbeat.js";
 
 function onDocumentLoad() {
     let page = window.location.pathname.slice(1);
@@ -13,6 +13,8 @@ function onDocumentLoad() {
     if (!page) { page = "dashboard" }
     document.getElementById("link-" + page).classList.add("active-nav-link");
 
+    var heartbeat = new Heartbeat();
+    heartbeat.beep(onHeartbeatAnswer, onHeartbeatError);
 }
 
 function onHeartbeatAnswer(answer) {
@@ -26,8 +28,6 @@ function onHeartbeatError(error) {
     document.getElementById("shutdown-timer").style.display = "none";
     document.getElementById("not-connected").style.display = "block";
 }
-
-setInterval(function repeatHeartbeat() { BcuMessenger.send().heartbeat(onHeartbeatAnswer, onHeartbeatError) }, 1000);
 
 function distribute_data(current_status) {
     let page = window.location.pathname.slice(1);
