@@ -9,9 +9,10 @@ function Heartbeat() {
 }
 
 /**
- * Push the new settings to the server.
+ * Initiate heartbeat.
  *
- * @param {Object} newSettings The new settings JSON object
+ * @param {function():void} onHeartbeatAnswer Answer callback
+ * @param {function():void} onHeartbeatError Error callback
  */
 Heartbeat.prototype.beep = function (onHeartbeatAnswer, onHeartbeatError) {
     
