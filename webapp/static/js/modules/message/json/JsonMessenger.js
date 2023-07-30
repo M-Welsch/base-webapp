@@ -1,5 +1,8 @@
+import BcuCommunicator from "../BcuCommunicator.js";
+
 //const BASE_ADDRESS = "ws://192.168.178.39:8453"
 var BASE_ADDRESS = "ws://127.0.0.1:8453"
+var bcuCommunicator = new BcuCommunicator();
 
 function sendMessageToBcu(
     payload,
@@ -32,7 +35,7 @@ export function backupAbort(onAbort) {
 
 export function heartbeat(onAnswer, onError) {
     let message = buildMessage("heartbeat");
-    sendMessage(message, onAnswer, null, onError);
+    bcuCommunicator.send(JSON.stringify(message));
 }
 
 export function logfileIndex(onAnswer) {
